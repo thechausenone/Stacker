@@ -22,7 +22,7 @@ c:\Software\Keil\ARM\RV31\LIB\RTX_CM3.LIB --library_type=microlib --strict --sca
 ### ADS-LD Output File: 'Project4.axf'
 ### ADS-LD Command File: 'Project4.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'Project4.lnp', Handle=0x000009C0
+### Creating CmdFile 'Project4.lnp', Handle=0x00000494
 ### Writing '.lnp' file
 ### ADS-LD Command file 'Project4.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

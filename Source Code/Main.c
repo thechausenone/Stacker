@@ -8,82 +8,90 @@
 #include "timer.h"
 #include "glcd_scroll.h"
 #include "glcd.h"
+#include "Main.h"
+#include "type.h"
 
-#define BG White
-#define FG Blue
+//=================================================================
+//=====================GLOBAL VARIABLES============================
+//=================================================================
+  t_block* block = (t_block*)0x10000000;
+  t_stack* block_stack = (t_stack*)0x10000007;
 
-OS_TID t_test;
+//=================================================================
+//=====================FUNCTIONS===================================
+//=================================================================
+//initializes the values for the block
+void create_block(U32 h, U32 l, U32 s, U32 x, U32 y){
+    block->height = h;
+    block->length = l;
+    block->speed = s;
+    block->x = x;
+    block->y = y;
+}
 
-void test_peripherals(){
+void print_stuff(){
+  printf("==============STACK==========\n");
+  printf("height: %d\n",block_stack->height);
+  printf("length: %d\n",block_stack->length);
+  printf("x: %d\n",block_stack->x);
+  printf("y: %d\n\n",block_stack->y);
+  
+  printf("==============BLOCK==========\n");
+  printf("height: %d\n",block->height);
+  printf("length: %d\n",block->length);
+  printf("speed: %d\n",block->speed);
+  printf("x: %d\n",block->x);
+  printf("y: %d\n\n",block->y);
+}
+
+//initializes the values for the stack
+void create_stack(U32 h, U32 l, U32 x, U32 y){
+    int i;
+    block_stack->height = h;
+    block_stack->length = l;
+  
+    for (i = 0; i < 8*80; i++)
+        block_stack->top_row[i] = W;
         
-    unsigned short cross_bitmap[] = {FG, FG, FG, FG, FG, FG ,FG ,FG ,FG,
-                                     FG, FG, FG, FG, FG, FG ,FG ,FG ,FG,
-                                     FG, FG, FG, FG, FG, FG ,FG ,FG ,FG,
-                                     FG, FG, FG, FG, FG, FG ,FG ,FG ,FG,
-                                     FG, FG, FG, FG, FG, FG ,FG ,FG ,FG,
-                                     FG, FG, FG, FG, FG, FG ,FG ,FG ,FG,
-                                     FG, FG, FG, FG, FG, FG ,FG ,FG ,FG,
-                                     FG, FG, FG, FG, FG, FG ,FG ,FG ,FG };
+    block_stack->x = x;
+    block_stack->y = y;
     
-//     //TEST LED
-//     LED_setup();
-//     LED_display(27);// 0->255
-    
-//     //TEST PUSHBUTTON
-//      pushbutton_setup();
-//     while (1) {
-//         printf("Value: %d \n", pushbutton_read());
-//     }
-    
-//     //TEST JOYSTICK
-//     //left: 8, up: 16, right: 32, down: 64, select: 1, default: 0
-//     joystick_setup();
-//     while (1) {
-//         printf("Value: %d \n", joystick_read());
-//     }
-    
-//     //TEST POTENTIOMETER    
-//     potentiometer_setup(); // has to be in a task
-//     while (1) {
-//         printf("Value: %d \n", potentiometer_read());
-//     }
+    return;
+}
 
-//     //TEST TIMER
-//     timer_setup(); //microseconds
-//     pushbutton_setup();
-//     while (1) {
-//         printf("Value: %d \n", timer_read());
-//         if (pushbutton_read()==0)
-//             timer_reset();
-//     }
-
-    //TEST LCD 
-    //init_scroll();
-    //append_char('A');
-    //refresh_lcd();
-                  
-    SystemInit();
+//initializes all required peripherals and other stuff
+void init() {
+    //other
+    //SystemInit();
+  
+    //peripherals
     GLCD_Init();
-    GLCD_Clear(BG);
-
-    while(1) {
-    GLCD_Bitmap(160, 120, 9, 8, (unsigned char*)cross_bitmap);
-    GLCD_Bitmap(160-9, 120, 9, 8, (unsigned char*)cross_bitmap);
-    }
-}
-
-__task void task_test(void) {
- 
- test_peripherals();
+    GLCD_Clear(B);
+    
+    LED_setup();
+    pushbutton_setup();
+    joystick_setup(); //left: 8, up: 16, right: 32, down: 64, select: 1, default: 0
+    potentiometer_setup(); // has to be in a task
+    
+    //gameplay objects
+    create_block(8, 80, 5, 0, block_stack->height + 16);
+    create_stack(8, 80, 80, 0);
+  
+    GLCD_Bitmap(block_stack->x, block_stack->y, block_stack->length, block_stack->height, (unsigned char*)(block_stack->top_row));
+    print_stuff();
     
 }
+
+
 
 int main() {
-    
-    printf("main\n");
-    os_sys_init (task_test);
-    
+  printf("hi11\n");
+    init();
+    printf("hi\n");
     return 0;
       
+  //add vertical scroll in pixels values being 8 
 }
 
+
+    

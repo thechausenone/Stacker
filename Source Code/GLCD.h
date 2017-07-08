@@ -51,7 +51,7 @@ extern void GLCD_DisplayString  (unsigned int ln, unsigned int col, unsigned cha
 extern void GLCD_ClearLn        (unsigned int ln, unsigned char fi);
 extern void GLCD_Bargraph       (unsigned int x,  unsigned int y, unsigned int w, unsigned int h, unsigned int val);
 extern void GLCD_Bitmap         (unsigned int x,  unsigned int y, unsigned int w, unsigned int h, unsigned char *bitmap);
-extern void GLCD_ScrollVertical (unsigned int dy);
+extern void GLCD_ScrollVertical (unsigned int dy); 
 
 extern void GLCD_WrCmd          (unsigned char cmd);
 extern void GLCD_WrReg          (unsigned char reg, unsigned short val); 

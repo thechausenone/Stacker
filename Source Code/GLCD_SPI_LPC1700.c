@@ -17,8 +17,8 @@
 
 /************************** Orientation  configuration ************************/
 
-#define LANDSCAPE   1                   /* 1 for landscape, 0 for portrait    */
-#define ROTATE180   0                   /* 1 to rotate the screen for 180 deg */
+#define LANDSCAPE   0                   /* 1 for landscape, 0 for portrait    */
+#define ROTATE180   1                   /* 1 to rotate the screen for 180 deg */
 
 /*********************** Hardware specific configuration **********************/
 
