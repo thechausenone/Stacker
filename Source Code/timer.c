@@ -19,6 +19,13 @@ uint32_t timer_read(void) {
 	return LPC_TIM0->TC/1000;
 }
 
+//function that resets the timer
 void timer_reset(void) {
     LPC_TIM0->TC = 0;
+}
+
+//function that creates a delay in millisconds
+void timer_delay(U32 duration) {
+  timer_reset();
+  while(timer_read()< duration){};
 }
