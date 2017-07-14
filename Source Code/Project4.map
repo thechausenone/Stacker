@@ -154,9 +154,9 @@ Removing Unused input sections from the image.
     Removing glcd_scroll.o(.data), (20 bytes).
     Removing glcd_spi_lpc1700.o(.rev16_text), (4 bytes).
     Removing glcd_spi_lpc1700.o(.revsh_text), (4 bytes).
-    Removing glcd_spi_lpc1700.o(.text), (2980 bytes).
+    Removing glcd_spi_lpc1700.o(.text), (3080 bytes).
     Removing glcd_spi_lpc1700.o(.constdata), (6272 bytes).
-    Removing glcd_spi_lpc1700.o(.data), (5 bytes).
+    Removing glcd_spi_lpc1700.o(.data), (9 bytes).
     Removing joystick.o(.rev16_text), (4 bytes).
     Removing joystick.o(.revsh_text), (4 bytes).
     Removing joystick.o(.text), (88 bytes).
@@ -180,7 +180,7 @@ Removing Unused input sections from the image.
     Removing sensor_fusion.o(.data), (53 bytes).
     Removing timer.o(.rev16_text), (4 bytes).
     Removing timer.o(.revsh_text), (4 bytes).
-    Removing timer.o(.text), (72 bytes).
+    Removing timer.o(.text), (108 bytes).
     Removing uart.o(.rev16_text), (4 bytes).
     Removing uart.o(.revsh_text), (4 bytes).
     Removing fadd.o(.text), (176 bytes).
@@ -201,7 +201,7 @@ Removing Unused input sections from the image.
     Removing glcd_scroll.o(i.last_line), (32 bytes).
     Removing glcd_scroll.o(i.last_window_line), (32 bytes).
 
-59 unused section(s) (total 32051 bytes) removed from the image.
+59 unused section(s) (total 32191 bytes) removed from the image.
 
 ==============================================================================
 

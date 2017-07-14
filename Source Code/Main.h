@@ -1,6 +1,19 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 #include "type.h"
+#include <math.h>
+#include "lcd_display.h"
+#include "stat_display.h"
+#include "game_state.h"
+#include "game_objects.h"
+#include "potentiometer.h"
+#include "joystick.h"
+#include <stdint.h>
+#include <stdbool.h>
+#include <rtl.h>
+#include <stdio.h>
+#include <lpc17xx.h>
+
 
 //=================================================================
 //=====================DEFINITIONS=================================
@@ -9,31 +22,8 @@
 #define B 0x07E0
 
 //=================================================================
-//======================TYPE DEFS==================================
-//=================================================================
-typedef struct block{
-    U32 height:10;//8
-    U32 length:10;//80
-    U32 speed:10;
-    U16 clear_block[8*80];
-    U16 set_block[8*80];
-    U32 x:10;
-    U32 y:10;
-}t_block;
-
-typedef struct stack {
-    U32 length:10;//80
-    U32 height:10;
-    U16 top_row[80];
-    U32 x:10;
-    U32 y:10;
-}t_stack;
-
-//=================================================================
 //=====================FUNCTION SIGNATURES=========================
 //=================================================================
-void init(void);
-void create_block(U32 h, U32 l, U32 s, U32 x, U32 y);
-void create_stack(U32 h, U32 l, U32 x, U32 y);
+void EINT3_IRQHandler(void);
 
 #endif

@@ -8,28 +8,45 @@ Section Cross References
     startup_lpc17xx.o(RESET) refers to startup_lpc17xx.o(.text) for Reset_Handler
     startup_lpc17xx.o(RESET) refers to hal_cm3.o(.emb_text) for SVC_Handler
     startup_lpc17xx.o(RESET) refers to uart.o(.text) for UART0_IRQHandler
+    startup_lpc17xx.o(RESET) refers to main.o(.text) for EINT3_IRQHandler
     startup_lpc17xx.o(.text) refers to system_lpc17xx.o(.text) for SystemInit
     startup_lpc17xx.o(.text) refers to entry.o(.ARM.Collect$$$$00000000) for __main
-    system_lpc17xx.o(.text) refers to uldiv.o(.text) for __aeabi_uldivmod
-    system_lpc17xx.o(.text) refers to system_lpc17xx.o(.data) for SystemCoreClock
-    retarget.o(.text) refers to uart.o(.text) for UARTInit
-    retarget.o(.text) refers to retarget.o(.data) for uart_init_called
     uart.o(.text) refers to uart.o(.data) for RcvLock0
     uart.o(.text) refers to uart.o(.bss) for UART0Buffer
     uart.o(.text) refers to system_lpc17xx.o(.data) for SystemCoreClock
-    main.o(.text) refers to glcd_spi_lpc1700.o(.text) for GLCD_Bitmap
-    main.o(.text) refers to timer.o(.text) for timer_setup
-    main.o(.text) refers to led.o(.text) for LED_setup
-    main.o(.text) refers to joystick.o(.text) for pushbutton_setup
-    main.o(.text) refers to potentiometer.o(.text) for potentiometer_setup
+    retarget.o(.text) refers to uart.o(.text) for UARTInit
+    retarget.o(.text) refers to retarget.o(.data) for uart_init_called
+    system_lpc17xx.o(.text) refers to uldiv.o(.text) for __aeabi_uldivmod
+    system_lpc17xx.o(.text) refers to system_lpc17xx.o(.data) for SystemCoreClock
     main.o(.text) refers to printfb.o(i.__0printf$bare) for __2printf
+    main.o(.text) refers to lcd_display.o(.text) for draw_to_LCD
+    main.o(.text) refers to potentiometer.o(.text) for potentiometer_read
+    main.o(.text) refers to dfltui.o(.text) for __aeabi_ui2d
+    main.o(.text) refers to ceil.o(i.ceil) for ceil
+    main.o(.text) refers to dadd.o(.text) for __aeabi_dadd
+    main.o(.text) refers to dfixui.o(.text) for __aeabi_d2uiz
+    main.o(.text) refers to timer.o(.text) for timer_delay
+    main.o(.text) refers to game_state.o(.text) for init_game
     main.o(.text) refers to hal_cm3.o(.emb_text) for os_set_env
-    main.o(.text) refers to main.o(.data) for block
-    main.o(.text) refers to main.o(.bss) for sem1
+    main.o(.text) refers to main.o(.data) for tid_drop_block
+    main.o(.text) refers to rt_event.o(i.rt_evt_set) for rt_evt_set
+    main.o(.text) refers to rt_event.o(i.rt_evt_wait) for rt_evt_wait
+    main.o(.text) refers to main.o(.bss) for sem_pos
+    main.o(.text) refers to rt_mutex.o(i.rt_mut_wait) for rt_mut_wait
+    main.o(.text) refers to rt_mutex.o(i.rt_mut_release) for rt_mut_release
     main.o(.text) refers to rt_mutex.o(i.rt_mut_init) for rt_mut_init
     main.o(.text) refers to rt_task.o(i.rt_tsk_create) for rt_tsk_create
     main.o(.text) refers to rt_task.o(i.rt_tsk_delete) for rt_tsk_delete
     main.o(.text) refers to rt_task.o(i.rt_sys_init) for rt_sys_init
+    lcd_display.o(.text) refers to glcd_spi_lpc1700.o(.text) for GLCD_Bitmap
+    lcd_display.o(.text) refers to main.o(.data) for block
+    game_state.o(.text) refers to glcd_spi_lpc1700.o(.text) for GLCD_Init
+    game_state.o(.text) refers to timer.o(.text) for timer_setup
+    game_state.o(.text) refers to led.o(.text) for LED_setup
+    game_state.o(.text) refers to joystick.o(.text) for pushbutton_setup
+    game_state.o(.text) refers to potentiometer.o(.text) for potentiometer_setup
+    game_state.o(.text) refers to lcd_display.o(.text) for draw_to_LCD
+    game_state.o(.text) refers to main.o(.data) for block
     led.o(.text) refers to led.o(.constdata) for led_pos
     potentiometer.o(.text) refers to rt_task.o(i.rt_tsk_pass) for rt_tsk_pass
     timer.o(.text) refers to system_lpc17xx.o(.data) for SystemCoreClock
@@ -105,6 +122,19 @@ Section Cross References
     rt_task.o(i.rt_tsk_prio) refers to rtx_config.o(.bss) for os_active_TCB
     rt_task.o(i.rt_tsk_prio) refers to rt_list.o(.bss) for os_rdy
     rt_task.o(i.rt_tsk_self) refers to rt_task.o(.data) for .data
+    rt_event.o(i.isr_evt_set) refers to rt_list.o(i.rt_psq_enq) for rt_psq_enq
+    rt_event.o(i.isr_evt_set) refers to rt_system.o(i.rt_psh_req) for rt_psh_req
+    rt_event.o(i.isr_evt_set) refers to rtx_config.o(.bss) for os_active_TCB
+    rt_event.o(i.rt_evt_clr) refers to rtx_config.o(.bss) for os_active_TCB
+    rt_event.o(i.rt_evt_get) refers to rt_task.o(.data) for os_tsk
+    rt_event.o(i.rt_evt_psh) refers to rt_list.o(i.rt_rmv_dly) for rt_rmv_dly
+    rt_event.o(i.rt_evt_psh) refers to rt_list.o(i.rt_put_prio) for rt_put_prio
+    rt_event.o(i.rt_evt_psh) refers to rt_list.o(.bss) for os_rdy
+    rt_event.o(i.rt_evt_set) refers to rt_list.o(i.rt_rmv_dly) for rt_rmv_dly
+    rt_event.o(i.rt_evt_set) refers to rt_task.o(i.rt_dispatch) for rt_dispatch
+    rt_event.o(i.rt_evt_set) refers to rtx_config.o(.bss) for os_active_TCB
+    rt_event.o(i.rt_evt_wait) refers to rt_task.o(i.rt_block) for rt_block
+    rt_event.o(i.rt_evt_wait) refers to rt_task.o(.data) for os_tsk
     rt_mutex.o(i.rt_mut_release) refers to rt_list.o(i.rt_get_first) for rt_get_first
     rt_mutex.o(i.rt_mut_release) refers to rt_list.o(i.rt_rmv_dly) for rt_rmv_dly
     rt_mutex.o(i.rt_mut_release) refers to rt_list.o(i.rt_put_prio) for rt_put_prio
@@ -185,19 +215,6 @@ Section Cross References
     rt_robin.o(i.rt_init_robin) refers to rt_robin.o(.data) for .data
     rt_robin.o(i.rt_init_robin) refers to rtx_config.o(.constdata) for os_rrobin
     rt_membox.o(i._calloc_box) refers to hal_cm3.o(.emb_text) for _alloc_box
-    rt_event.o(i.isr_evt_set) refers to rt_list.o(i.rt_psq_enq) for rt_psq_enq
-    rt_event.o(i.isr_evt_set) refers to rt_system.o(i.rt_psh_req) for rt_psh_req
-    rt_event.o(i.isr_evt_set) refers to rtx_config.o(.bss) for os_active_TCB
-    rt_event.o(i.rt_evt_clr) refers to rtx_config.o(.bss) for os_active_TCB
-    rt_event.o(i.rt_evt_get) refers to rt_task.o(.data) for os_tsk
-    rt_event.o(i.rt_evt_psh) refers to rt_list.o(i.rt_rmv_dly) for rt_rmv_dly
-    rt_event.o(i.rt_evt_psh) refers to rt_list.o(i.rt_put_prio) for rt_put_prio
-    rt_event.o(i.rt_evt_psh) refers to rt_list.o(.bss) for os_rdy
-    rt_event.o(i.rt_evt_set) refers to rt_list.o(i.rt_rmv_dly) for rt_rmv_dly
-    rt_event.o(i.rt_evt_set) refers to rt_task.o(i.rt_dispatch) for rt_dispatch
-    rt_event.o(i.rt_evt_set) refers to rtx_config.o(.bss) for os_active_TCB
-    rt_event.o(i.rt_evt_wait) refers to rt_task.o(i.rt_block) for rt_block
-    rt_event.o(i.rt_evt_wait) refers to rt_task.o(.data) for os_tsk
     rt_mailbox.o(i.isr_mbx_receive) refers to rt_list.o(i.rt_psq_enq) for rt_psq_enq
     rt_mailbox.o(i.isr_mbx_receive) refers to rt_system.o(i.rt_psh_req) for rt_psh_req
     rt_mailbox.o(i.isr_mbx_send) refers to rt_list.o(i.rt_psq_enq) for rt_psq_enq
@@ -249,6 +266,11 @@ Section Cross References
     rt_timer.o(i.rt_tmr_tick) refers to rt_membox.o(i.rt_free_box) for rt_free_box
     rt_timer.o(i.rt_tmr_tick) refers to rt_timer.o(.data) for .data
     rt_timer.o(i.rt_tmr_tick) refers to rtx_config.o(.data) for m_tmr
+    ceil.o(i.__softfp_ceil) refers (Special) to iusefp.o(.text) for __I$use$fp
+    ceil.o(i.__softfp_ceil) refers to ceil.o(i.ceil) for ceil
+    ceil.o(i.ceil) refers (Special) to iusefp.o(.text) for __I$use$fp
+    ceil.o(i.ceil) refers to dadd.o(.text) for __aeabi_dadd
+    ceil.o(i.ceil) refers to cdrcmple.o(.text) for __aeabi_cdrcmple
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry8.o(.ARM.Collect$$$$00000009) for _main_init
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry5.o(.ARM.Collect$$$$00000004) for _main_scatterload
@@ -491,22 +513,27 @@ Section Cross References
     printfa.o(i._printf_pre_padding) refers (Special) to iusefp.o(.text) for __I$use$fp
     printfa.o(i._snputc) refers (Special) to iusefp.o(.text) for __I$use$fp
     printfa.o(i._sputc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    dadd.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
+    dadd.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    dadd.o(.text) refers to llsshr.o(.text) for __aeabi_lasr
+    dadd.o(.text) refers to depilogue.o(.text) for _double_epilogue
+    dfltui.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
+    dfltui.o(.text) refers to depilogue.o(.text) for _double_epilogue
+    dfixui.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
+    dfixui.o(.text) refers to llushr.o(.text) for __aeabi_llsr
     entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
     entry2.o(.ARM.Collect$$$$00002712) refers to startup_lpc17xx.o(STACK) for __initial_sp
     entry2.o(__vectab_stack_and_reset_area) refers to startup_lpc17xx.o(STACK) for __initial_sp
     entry2.o(__vectab_stack_and_reset_area) refers to entry.o(.ARM.Collect$$$$00000000) for __main
     entry5.o(.ARM.Collect$$$$00000004) refers to init.o(.text) for __scatterload
     entry8.o(.ARM.Collect$$$$00000009) refers to main.o(.text) for main
-    dadd.o(.text) refers to llshl.o(.text) for __aeabi_llsl
-    dadd.o(.text) refers to llsshr.o(.text) for __aeabi_lasr
-    dadd.o(.text) refers to depilogue.o(.text) for _double_epilogue
+    depilogue.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    depilogue.o(.text) refers to llushr.o(.text) for __aeabi_llsr
     dmul.o(.text) refers to depilogue.o(.text) for _double_epilogue
     ddiv.o(.text) refers to depilogue.o(.text) for _double_round
     dfixul.o(.text) refers to llushr.o(.text) for __aeabi_llsr
     dfixul.o(.text) refers to llshl.o(.text) for __aeabi_llsl
     init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
-    depilogue.o(.text) refers to llshl.o(.text) for __aeabi_llsl
-    depilogue.o(.text) refers to llushr.o(.text) for __aeabi_llsr
     glcd_scroll.o(i.last_line) refers to glcd_scroll.o(.data) for cache_start
     glcd_scroll.o(i.last_window_line) refers to glcd_scroll.o(.data) for window_start
 
@@ -516,10 +543,14 @@ Section Cross References
 Removing Unused input sections from the image.
 
     Removing startup_lpc17xx.o(HEAP), (8192 bytes).
-    Removing system_lpc17xx.o(.rev16_text), (4 bytes).
-    Removing system_lpc17xx.o(.revsh_text), (4 bytes).
     Removing uart.o(.rev16_text), (4 bytes).
     Removing uart.o(.revsh_text), (4 bytes).
+    Removing system_lpc17xx.o(.rev16_text), (4 bytes).
+    Removing system_lpc17xx.o(.revsh_text), (4 bytes).
+    Removing main.o(.rev16_text), (4 bytes).
+    Removing main.o(.revsh_text), (4 bytes).
+    Removing game_state.o(.rev16_text), (4 bytes).
+    Removing game_state.o(.revsh_text), (4 bytes).
     Removing led.o(.rev16_text), (4 bytes).
     Removing led.o(.revsh_text), (4 bytes).
     Removing joystick.o(.rev16_text), (4 bytes).
@@ -535,11 +566,11 @@ Removing Unused input sections from the image.
     Removing glcd_scroll.o(.data), (20 bytes).
     Removing glcd_spi_lpc1700.o(.rev16_text), (4 bytes).
     Removing glcd_spi_lpc1700.o(.revsh_text), (4 bytes).
-    Removing rt_task.o(i.rt_block), (56 bytes).
     Removing rt_task.o(i.rt_tsk_prio), (128 bytes).
     Removing rt_task.o(i.rt_tsk_self), (16 bytes).
-    Removing rt_mutex.o(i.rt_mut_release), (172 bytes).
-    Removing rt_mutex.o(i.rt_mut_wait), (100 bytes).
+    Removing rt_event.o(i.isr_evt_set), (40 bytes).
+    Removing rt_event.o(i.rt_evt_clr), (28 bytes).
+    Removing rt_event.o(i.rt_evt_get), (12 bytes).
     Removing rt_system.o(.emb_text), (0 bytes).
     Removing rt_system.o(i.rt_psh_req), (32 bytes).
     Removing rt_system.o(i.rt_resume), (176 bytes).
@@ -547,14 +578,7 @@ Removing Unused input sections from the image.
     Removing rt_system.o(i.rt_tsk_lock), (80 bytes).
     Removing rt_system.o(i.rt_tsk_unlock), (80 bytes).
     Removing rt_list.o(i.rt_psq_enq), (88 bytes).
-    Removing rt_list.o(i.rt_put_dly), (72 bytes).
-    Removing rt_list.o(i.rt_resort_prio), (52 bytes).
     Removing rt_membox.o(i._calloc_box), (30 bytes).
-    Removing rt_event.o(i.isr_evt_set), (40 bytes).
-    Removing rt_event.o(i.rt_evt_clr), (28 bytes).
-    Removing rt_event.o(i.rt_evt_get), (12 bytes).
-    Removing rt_event.o(i.rt_evt_set), (96 bytes).
-    Removing rt_event.o(i.rt_evt_wait), (64 bytes).
     Removing rt_mailbox.o(i.isr_mbx_receive), (84 bytes).
     Removing rt_mailbox.o(i.isr_mbx_send), (14 bytes).
     Removing rt_mailbox.o(i.rt_mbx_check), (8 bytes).
@@ -571,16 +595,13 @@ Removing Unused input sections from the image.
     Removing rt_time.o(i.rt_time_get), (12 bytes).
     Removing rt_timer.o(i.rt_tmr_create), (80 bytes).
     Removing rt_timer.o(i.rt_tmr_kill), (52 bytes).
-    Removing dadd.o(.text), (334 bytes).
     Removing dmul.o(.text), (228 bytes).
     Removing ddiv.o(.text), (222 bytes).
     Removing dfixul.o(.text), (48 bytes).
-    Removing cdrcmple.o(.text), (40 bytes).
-    Removing depilogue.o(.text), (190 bytes).
     Removing glcd_scroll.o(i.last_line), (32 bytes).
     Removing glcd_scroll.o(i.last_window_line), (32 bytes).
 
-64 unused section(s) (total 12983 bytes) removed from the image.
+58 unused section(s) (total 11823 bytes) removed from the image.
 
 ==============================================================================
 
@@ -593,32 +614,35 @@ Image Symbol Table
     RESET                                    0x00000000   Section      204  startup_lpc17xx.o(RESET)
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
+    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixui.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
+    ../fplib/microlib/fpflt.c                0x00000000   Number         0  dfltui.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
+    ../mathlib/ceil.c                        0x00000000   Number         0  ceil.o ABSOLUTE
     C:\Software\Keil\ARM\Startup\NXP\LPC17xx\system_LPC17xx.c 0x00000000   Number         0  system_lpc17xx.o ABSOLUTE
     C:\\Software\\Keil\\ARM\\Startup\\NXP\\LPC17xx\\system_LPC17xx.c 0x00000000   Number         0  system_lpc17xx.o ABSOLUTE
     SRC\CM\HAL_CM3.c                         0x00000000   Number         0  hal_cm3.o ABSOLUTE
@@ -643,14 +667,19 @@ Image Symbol Table
     Source Code\Retarget.c                   0x00000000   Number         0  retarget.o ABSOLUTE
     Source Code\\GLCD_SPI_LPC1700.c          0x00000000   Number         0  glcd_spi_lpc1700.o ABSOLUTE
     Source Code\\GLCD_Scroll.c               0x00000000   Number         0  glcd_scroll.o ABSOLUTE
+    Source Code\\Main.c                      0x00000000   Number         0  main.o ABSOLUTE
+    Source Code\\game_state.c                0x00000000   Number         0  game_state.o ABSOLUTE
     Source Code\\joystick.c                  0x00000000   Number         0  joystick.o ABSOLUTE
     Source Code\\led.c                       0x00000000   Number         0  led.o ABSOLUTE
     Source Code\\potentiometer.c             0x00000000   Number         0  potentiometer.o ABSOLUTE
     Source Code\\timer.c                     0x00000000   Number         0  timer.o ABSOLUTE
     Source Code\\uart.c                      0x00000000   Number         0  uart.o ABSOLUTE
+    Source Code\game_state.c                 0x00000000   Number         0  game_state.o ABSOLUTE
     Source Code\joystick.c                   0x00000000   Number         0  joystick.o ABSOLUTE
+    Source Code\lcd_display.c                0x00000000   Number         0  lcd_display.o ABSOLUTE
     Source Code\led.c                        0x00000000   Number         0  led.o ABSOLUTE
     Source Code\potentiometer.c              0x00000000   Number         0  potentiometer.o ABSOLUTE
+    Source Code\stat_display.c               0x00000000   Number         0  stat_display.o ABSOLUTE
     Source Code\timer.c                      0x00000000   Number         0  timer.o ABSOLUTE
     Source Code\uart.c                       0x00000000   Number         0  uart.o ABSOLUTE
     cdrcmple.s                               0x00000000   Number         0  cdrcmple.o ABSOLUTE
@@ -667,109 +696,126 @@ Image Symbol Table
     __lit__00000000                          0x000000dc   Data           4  entry2.o(.ARM.Collect$$$$00002712)
     .emb_text                                0x000000e0   Section      340  hal_cm3.o(.emb_text)
     .text                                    0x00000234   Section       36  startup_lpc17xx.o(.text)
-    .text                                    0x00000258   Section        0  retarget.o(.text)
-    SVC_TABLE                                0x000002f8   Section        4  SVC_Table.o(SVC_TABLE)
+    .text                                    0x00000258   Section        0  rtx_config.o(.text)
+    .text                                    0x00000264   Section        0  led.o(.text)
+    .text                                    0x000002e8   Section        0  iusefp.o(.text)
+    SVC_TABLE                                0x000002e8   Section        4  SVC_Table.o(SVC_TABLE)
+    i.__0printf$bare                         0x000002ec   Section        0  printfb.o(i.__0printf$bare)
     .ARM.__at_0x02FC                         0x000002fc   Section        4  startup_lpc17xx.o(.ARM.__at_0x02FC)
-    .text                                    0x00000300   Section        0  system_lpc17xx.o(.text)
-    .text                                    0x00000618   Section        0  uart.o(.text)
-    NVIC_EnableIRQ                           0x00000971   Thumb Code    24  uart.o(.text)
-    .text                                    0x000009c4   Section        0  main.o(.text)
-    .text                                    0x00000ccc   Section        0  rtx_config.o(.text)
-    .text                                    0x00000cd8   Section        0  led.o(.text)
-    .text                                    0x00000d5c   Section        0  joystick.o(.text)
-    .text                                    0x00000db4   Section        0  potentiometer.o(.text)
-    .text                                    0x00000e20   Section        0  timer.o(.text)
-    .text                                    0x00000e8c   Section        0  glcd_spi_lpc1700.o(.text)
-    delay                                    0x00000e8d   Thumb Code    14  glcd_spi_lpc1700.o(.text)
-    spi_tran_man                             0x00000e9b   Thumb Code   124  glcd_spi_lpc1700.o(.text)
-    wr_cmd                                   0x00000f17   Thumb Code    36  glcd_spi_lpc1700.o(.text)
-    wr_dat                                   0x00000f3b   Thumb Code    36  glcd_spi_lpc1700.o(.text)
-    rd_reg                                   0x00000f5f   Thumb Code    66  glcd_spi_lpc1700.o(.text)
-    rd_id_man                                0x00000fa1   Thumb Code   132  glcd_spi_lpc1700.o(.text)
-    spi_tran                                 0x00001a21   Thumb Code    26  glcd_spi_lpc1700.o(.text)
-    wr_dat_start                             0x00001a3b   Thumb Code    16  glcd_spi_lpc1700.o(.text)
-    wr_dat_stop                              0x00001a4b   Thumb Code     8  glcd_spi_lpc1700.o(.text)
-    wr_dat_only                              0x00001a53   Thumb Code    18  glcd_spi_lpc1700.o(.text)
-    wr_reg                                   0x00001a65   Thumb Code    20  glcd_spi_lpc1700.o(.text)
-    .text                                    0x00001a94   Section        0  uldiv.o(.text)
-    .text                                    0x00001af6   Section        0  llshl.o(.text)
-    .text                                    0x00001b14   Section        0  llushr.o(.text)
-    .text                                    0x00001b34   Section       36  init.o(.text)
-    i.__0printf$bare                         0x00001b58   Section        0  printfb.o(i.__0printf$bare)
-    i.__scatterload_copy                     0x00001b68   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x00001b76   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x00001b78   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i._init_box                              0x00001b86   Section        0  rt_membox.o(i._init_box)
-    i._printf_core                           0x00001bcc   Section        0  printfb.o(i._printf_core)
-    _printf_core                             0x00001bcd   Thumb Code    34  printfb.o(i._printf_core)
-    i.dbg_init                               0x00001bf0   Section        0  hal_cm3.o(i.dbg_init)
-    i.dbg_task_notify                        0x00001c20   Section        0  hal_cm3.o(i.dbg_task_notify)
-    i.dbg_task_switch                        0x00001c40   Section        0  hal_cm3.o(i.dbg_task_switch)
-    i.os_tick_init                           0x00001c50   Section        0  rt_system.o(i.os_tick_init)
-    i.os_tick_irqack                         0x00001c78   Section        0  rt_system.o(i.os_tick_irqack)
-    i.rt_alloc_box                           0x00001c7a   Section        0  rt_membox.o(i.rt_alloc_box)
-    i.rt_chk_robin                           0x00001c94   Section        0  rt_robin.o(i.rt_chk_robin)
-    i.rt_dec_dly                             0x00001cdc   Section        0  rt_list.o(i.rt_dec_dly)
-    i.rt_dispatch                            0x00001d50   Section        0  rt_task.o(i.rt_dispatch)
-    i.rt_evt_psh                             0x00001d94   Section        0  rt_event.o(i.rt_evt_psh)
-    i.rt_free_box                            0x00001de0   Section        0  rt_membox.o(i.rt_free_box)
-    i.rt_get_first                           0x00001e00   Section        0  rt_list.o(i.rt_get_first)
-    i.rt_get_same_rdy_prio                   0x00001e28   Section        0  rt_list.o(i.rt_get_same_rdy_prio)
-    i.rt_init_context                        0x00001e4c   Section        0  rt_task.o(i.rt_init_context)
-    rt_init_context                          0x00001e4d   Thumb Code    64  rt_task.o(i.rt_init_context)
-    i.rt_init_robin                          0x00001e90   Section        0  rt_robin.o(i.rt_init_robin)
-    i.rt_init_stack                          0x00001ea8   Section        0  hal_cm3.o(i.rt_init_stack)
-    i.rt_mbx_psh                             0x00001ef8   Section        0  rt_mailbox.o(i.rt_mbx_psh)
-    i.rt_mut_init                            0x00001fb8   Section        0  rt_mutex.o(i.rt_mut_init)
-    i.rt_pop_req                             0x00001fc8   Section        0  rt_system.o(i.rt_pop_req)
-    i.rt_put_prio                            0x00002040   Section        0  rt_list.o(i.rt_put_prio)
-    i.rt_put_rdy_first                       0x00002078   Section        0  rt_list.o(i.rt_put_rdy_first)
-    i.rt_rmv_dly                             0x0000208c   Section        0  rt_list.o(i.rt_rmv_dly)
-    i.rt_rmv_list                            0x000020b4   Section        0  rt_list.o(i.rt_rmv_list)
-    i.rt_sem_psh                             0x000020e4   Section        0  rt_semaphore.o(i.rt_sem_psh)
-    i.rt_stk_check                           0x00002118   Section        0  rt_system.o(i.rt_stk_check)
-    i.rt_switch_req                          0x0000213c   Section        0  rt_task.o(i.rt_switch_req)
-    i.rt_sys_init                            0x00002164   Section        0  rt_task.o(i.rt_sys_init)
-    i.rt_systick                             0x000022bc   Section        0  rt_system.o(i.rt_systick)
-    i.rt_tmr_tick                            0x000022f8   Section        0  rt_timer.o(i.rt_tmr_tick)
-    i.rt_tsk_create                          0x00002338   Section        0  rt_task.o(i.rt_tsk_create)
-    i.rt_tsk_delete                          0x000023cc   Section        0  rt_task.o(i.rt_tsk_delete)
-    i.rt_tsk_pass                            0x00002488   Section        0  rt_task.o(i.rt_tsk_pass)
-    .constdata                               0x000024b8   Section       40  rtx_config.o(.constdata)
-    __tagsym$$used                           0x000024cc   Number         0  rtx_config.o(.constdata)
-    __tagsym$$used                           0x000024d0   Number         0  rtx_config.o(.constdata)
-    .constdata                               0x000024e0   Section        8  led.o(.constdata)
-    .constdata                               0x000024e8   Section     6272  glcd_spi_lpc1700.o(.constdata)
+    .text                                    0x00000300   Section        0  uart.o(.text)
+    NVIC_EnableIRQ                           0x00000659   Thumb Code    24  uart.o(.text)
+    .text                                    0x000006ac   Section        0  retarget.o(.text)
+    .text                                    0x0000074c   Section        0  system_lpc17xx.o(.text)
+    .text                                    0x00000a64   Section        0  main.o(.text)
+    .text                                    0x00000ea8   Section        0  lcd_display.o(.text)
+    .text                                    0x00000f74   Section        0  game_state.o(.text)
+    .text                                    0x000010c4   Section        0  joystick.o(.text)
+    .text                                    0x00001150   Section        0  potentiometer.o(.text)
+    .text                                    0x000011bc   Section        0  timer.o(.text)
+    .text                                    0x00001228   Section        0  glcd_spi_lpc1700.o(.text)
+    delay                                    0x00001229   Thumb Code    14  glcd_spi_lpc1700.o(.text)
+    spi_tran_man                             0x00001237   Thumb Code   124  glcd_spi_lpc1700.o(.text)
+    wr_cmd                                   0x000012b3   Thumb Code    36  glcd_spi_lpc1700.o(.text)
+    wr_dat                                   0x000012d7   Thumb Code    36  glcd_spi_lpc1700.o(.text)
+    rd_reg                                   0x000012fb   Thumb Code    66  glcd_spi_lpc1700.o(.text)
+    rd_id_man                                0x0000133d   Thumb Code   132  glcd_spi_lpc1700.o(.text)
+    spi_tran                                 0x00001dbd   Thumb Code    26  glcd_spi_lpc1700.o(.text)
+    wr_dat_start                             0x00001dd7   Thumb Code    16  glcd_spi_lpc1700.o(.text)
+    wr_dat_stop                              0x00001de7   Thumb Code     8  glcd_spi_lpc1700.o(.text)
+    wr_dat_only                              0x00001def   Thumb Code    18  glcd_spi_lpc1700.o(.text)
+    wr_reg                                   0x00001e01   Thumb Code    20  glcd_spi_lpc1700.o(.text)
+    .text                                    0x00001e30   Section        0  uldiv.o(.text)
+    .text                                    0x00001e92   Section        0  dadd.o(.text)
+    .text                                    0x00001fe0   Section        0  dfltui.o(.text)
+    .text                                    0x00001ffa   Section        0  dfixui.o(.text)
+    .text                                    0x0000202c   Section        0  llshl.o(.text)
+    .text                                    0x0000204a   Section        0  llushr.o(.text)
+    .text                                    0x0000206a   Section        0  llsshr.o(.text)
+    .text                                    0x0000208e   Section        0  depilogue.o(.text)
+    .text                                    0x0000214c   Section       40  cdrcmple.o(.text)
+    .text                                    0x00002174   Section       36  init.o(.text)
+    i.__scatterload_copy                     0x00002198   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x000021a6   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x000021a8   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._init_box                              0x000021b6   Section        0  rt_membox.o(i._init_box)
+    i._printf_core                           0x000021fc   Section        0  printfb.o(i._printf_core)
+    _printf_core                             0x000021fd   Thumb Code    34  printfb.o(i._printf_core)
+    i.ceil                                   0x00002220   Section        0  ceil.o(i.ceil)
+    i.dbg_init                               0x000022fc   Section        0  hal_cm3.o(i.dbg_init)
+    i.dbg_task_notify                        0x0000232c   Section        0  hal_cm3.o(i.dbg_task_notify)
+    i.dbg_task_switch                        0x0000234c   Section        0  hal_cm3.o(i.dbg_task_switch)
+    i.os_tick_init                           0x0000235c   Section        0  rt_system.o(i.os_tick_init)
+    i.os_tick_irqack                         0x00002384   Section        0  rt_system.o(i.os_tick_irqack)
+    i.rt_alloc_box                           0x00002386   Section        0  rt_membox.o(i.rt_alloc_box)
+    i.rt_block                               0x000023a0   Section        0  rt_task.o(i.rt_block)
+    i.rt_chk_robin                           0x000023d8   Section        0  rt_robin.o(i.rt_chk_robin)
+    i.rt_dec_dly                             0x00002420   Section        0  rt_list.o(i.rt_dec_dly)
+    i.rt_dispatch                            0x00002494   Section        0  rt_task.o(i.rt_dispatch)
+    i.rt_evt_psh                             0x000024d8   Section        0  rt_event.o(i.rt_evt_psh)
+    i.rt_evt_set                             0x00002524   Section        0  rt_event.o(i.rt_evt_set)
+    i.rt_evt_wait                            0x00002584   Section        0  rt_event.o(i.rt_evt_wait)
+    i.rt_free_box                            0x000025c4   Section        0  rt_membox.o(i.rt_free_box)
+    i.rt_get_first                           0x000025e4   Section        0  rt_list.o(i.rt_get_first)
+    i.rt_get_same_rdy_prio                   0x0000260c   Section        0  rt_list.o(i.rt_get_same_rdy_prio)
+    i.rt_init_context                        0x00002630   Section        0  rt_task.o(i.rt_init_context)
+    rt_init_context                          0x00002631   Thumb Code    64  rt_task.o(i.rt_init_context)
+    i.rt_init_robin                          0x00002674   Section        0  rt_robin.o(i.rt_init_robin)
+    i.rt_init_stack                          0x0000268c   Section        0  hal_cm3.o(i.rt_init_stack)
+    i.rt_mbx_psh                             0x000026dc   Section        0  rt_mailbox.o(i.rt_mbx_psh)
+    i.rt_mut_init                            0x0000279c   Section        0  rt_mutex.o(i.rt_mut_init)
+    i.rt_mut_release                         0x000027ac   Section        0  rt_mutex.o(i.rt_mut_release)
+    i.rt_mut_wait                            0x00002858   Section        0  rt_mutex.o(i.rt_mut_wait)
+    i.rt_pop_req                             0x000028bc   Section        0  rt_system.o(i.rt_pop_req)
+    i.rt_put_dly                             0x00002934   Section        0  rt_list.o(i.rt_put_dly)
+    i.rt_put_prio                            0x0000297c   Section        0  rt_list.o(i.rt_put_prio)
+    i.rt_put_rdy_first                       0x000029b4   Section        0  rt_list.o(i.rt_put_rdy_first)
+    i.rt_resort_prio                         0x000029c8   Section        0  rt_list.o(i.rt_resort_prio)
+    i.rt_rmv_dly                             0x000029fc   Section        0  rt_list.o(i.rt_rmv_dly)
+    i.rt_rmv_list                            0x00002a24   Section        0  rt_list.o(i.rt_rmv_list)
+    i.rt_sem_psh                             0x00002a54   Section        0  rt_semaphore.o(i.rt_sem_psh)
+    i.rt_stk_check                           0x00002a88   Section        0  rt_system.o(i.rt_stk_check)
+    i.rt_switch_req                          0x00002aac   Section        0  rt_task.o(i.rt_switch_req)
+    i.rt_sys_init                            0x00002ad4   Section        0  rt_task.o(i.rt_sys_init)
+    i.rt_systick                             0x00002c2c   Section        0  rt_system.o(i.rt_systick)
+    i.rt_tmr_tick                            0x00002c68   Section        0  rt_timer.o(i.rt_tmr_tick)
+    i.rt_tsk_create                          0x00002ca8   Section        0  rt_task.o(i.rt_tsk_create)
+    i.rt_tsk_delete                          0x00002d3c   Section        0  rt_task.o(i.rt_tsk_delete)
+    i.rt_tsk_pass                            0x00002df8   Section        0  rt_task.o(i.rt_tsk_pass)
+    .constdata                               0x00002e28   Section       40  rtx_config.o(.constdata)
+    __tagsym$$used                           0x00002e3c   Number         0  rtx_config.o(.constdata)
+    __tagsym$$used                           0x00002e40   Number         0  rtx_config.o(.constdata)
+    .constdata                               0x00002e50   Section        8  led.o(.constdata)
+    .constdata                               0x00002e58   Section     6272  glcd_spi_lpc1700.o(.constdata)
     STACK                                    0x10000000   Section     8192  startup_lpc17xx.o(STACK)
-    .data                                    0x2007c000   Section        4  system_lpc17xx.o(.data)
-    .data                                    0x2007c004   Section       12  retarget.o(.data)
-    .data                                    0x2007c010   Section       32  uart.o(.data)
-    .data                                    0x2007c030   Section       12  main.o(.data)
-    .data                                    0x2007c03c   Section        4  rtx_config.o(.data)
-    .data                                    0x2007c040   Section        9  glcd_spi_lpc1700.o(.data)
-    Color                                    0x2007c040   Data           4  glcd_spi_lpc1700.o(.data)
-    y                                        0x2007c044   Data           4  glcd_spi_lpc1700.o(.data)
-    Himax                                    0x2007c048   Data           1  glcd_spi_lpc1700.o(.data)
-    .data                                    0x2007c04c   Section        8  rt_task.o(.data)
-    .data                                    0x2007c054   Section        1  hal_cm3.o(.data)
-    .data                                    0x2007c058   Section        8  rt_system.o(.data)
-    os_lock                                  0x2007c058   Data           1  rt_system.o(.data)
-    os_psh_flag                              0x2007c059   Data           1  rt_system.o(.data)
-    pend_flags                               0x2007c05a   Data           1  rt_system.o(.data)
-    .data                                    0x2007c060   Section        8  rt_robin.o(.data)
-    .data                                    0x2007c068   Section        4  rt_time.o(.data)
-    .data                                    0x2007c06c   Section        8  rt_timer.o(.data)
-    .bss                                     0x2007c074   Section      128  uart.o(.bss)
-    .bss                                     0x2007c0f4   Section       12  main.o(.bss)
-    .bss                                     0x2007c100   Section     4060  rtx_config.o(.bss)
-    .bss                                     0x2007d0dc   Section       48  rt_task.o(.bss)
-    .bss                                     0x2007d10c   Section       48  rt_list.o(.bss)
+    .data                                    0x2007c000   Section        4  rtx_config.o(.data)
+    .data                                    0x2007c004   Section       32  uart.o(.data)
+    .data                                    0x2007c024   Section       12  retarget.o(.data)
+    .data                                    0x2007c030   Section        4  system_lpc17xx.o(.data)
+    .data                                    0x2007c034   Section       24  main.o(.data)
+    .data                                    0x2007c04c   Section        9  glcd_spi_lpc1700.o(.data)
+    Color                                    0x2007c04c   Data           4  glcd_spi_lpc1700.o(.data)
+    y                                        0x2007c050   Data           4  glcd_spi_lpc1700.o(.data)
+    Himax                                    0x2007c054   Data           1  glcd_spi_lpc1700.o(.data)
+    .data                                    0x2007c058   Section        8  rt_task.o(.data)
+    .data                                    0x2007c060   Section        1  hal_cm3.o(.data)
+    .data                                    0x2007c064   Section        8  rt_system.o(.data)
+    os_lock                                  0x2007c064   Data           1  rt_system.o(.data)
+    os_psh_flag                              0x2007c065   Data           1  rt_system.o(.data)
+    pend_flags                               0x2007c066   Data           1  rt_system.o(.data)
+    .data                                    0x2007c06c   Section        8  rt_robin.o(.data)
+    .data                                    0x2007c074   Section        4  rt_time.o(.data)
+    .data                                    0x2007c078   Section        8  rt_timer.o(.data)
+    .bss                                     0x2007c080   Section     4060  rtx_config.o(.bss)
+    .bss                                     0x2007d05c   Section      128  uart.o(.bss)
+    .bss                                     0x2007d0dc   Section       36  main.o(.bss)
+    .bss                                     0x2007d100   Section       48  rt_task.o(.bss)
+    .bss                                     0x2007d130   Section       48  rt_list.o(.bss)
 
     Global Symbols
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    BuildAttributes$$THM_ISAv4$P$D$K$B$S$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$ROPI$EBA8$MICROLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    BuildAttributes$$THM_ISAv4$P$D$K$B$S$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OTIME$ROPI$IEEEJ$EBA8$MICROLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
     __ARM_use_no_argv                        0x00000000   Number         0  main.o ABSOLUTE
     __Vectors                                0x00000000   Data           4  startup_lpc17xx.o(RESET)
     __decompress                              - Undefined Weak Reference
@@ -804,7 +850,6 @@ Image Symbol Table
     EINT0_IRQHandler                         0x0000024f   Thumb Code     0  startup_lpc17xx.o(.text)
     EINT1_IRQHandler                         0x0000024f   Thumb Code     0  startup_lpc17xx.o(.text)
     EINT2_IRQHandler                         0x0000024f   Thumb Code     0  startup_lpc17xx.o(.text)
-    EINT3_IRQHandler                         0x0000024f   Thumb Code     0  startup_lpc17xx.o(.text)
     ENET_IRQHandler                          0x0000024f   Thumb Code     0  startup_lpc17xx.o(.text)
     I2C0_IRQHandler                          0x0000024f   Thumb Code     0  startup_lpc17xx.o(.text)
     I2C1_IRQHandler                          0x0000024f   Thumb Code     0  startup_lpc17xx.o(.text)
@@ -829,170 +874,197 @@ Image Symbol Table
     USBActivity_IRQHandler                   0x0000024f   Thumb Code     0  startup_lpc17xx.o(.text)
     USB_IRQHandler                           0x0000024f   Thumb Code     0  startup_lpc17xx.o(.text)
     WDT_IRQHandler                           0x0000024f   Thumb Code     0  startup_lpc17xx.o(.text)
-    sendchar                                 0x00000259   Thumb Code    64  retarget.o(.text)
-    getkey                                   0x00000299   Thumb Code    32  retarget.o(.text)
-    fputc                                    0x000002b9   Thumb Code    14  retarget.o(.text)
-    fgetc                                    0x000002c7   Thumb Code    20  retarget.o(.text)
-    ferror                                   0x000002db   Thumb Code     8  retarget.o(.text)
-    _ttywrch                                 0x000002e3   Thumb Code    12  retarget.o(.text)
-    _sys_exit                                0x000002ef   Thumb Code     4  retarget.o(.text)
-    SVC_Count                                0x000002f8   Data           4  SVC_Table.o(SVC_TABLE)
-    SVC_Table                                0x000002fc   Data           0  SVC_Table.o(SVC_TABLE)
-    SystemCoreClockUpdate                    0x00000301   Thumb Code   424  system_lpc17xx.o(.text)
+    os_idle_demon                            0x00000259   Thumb Code     4  rtx_config.o(.text)
+    os_tmr_call                              0x0000025d   Thumb Code     2  rtx_config.o(.text)
+    os_error                                 0x0000025f   Thumb Code     4  rtx_config.o(.text)
+    LED_setup                                0x00000265   Thumb Code    34  led.o(.text)
+    LED_set                                  0x00000287   Thumb Code    26  led.o(.text)
+    LED_clear                                0x000002a1   Thumb Code    26  led.o(.text)
+    LED_display                              0x000002bb   Thumb Code    38  led.o(.text)
+    SVC_Count                                0x000002e8   Data           4  SVC_Table.o(SVC_TABLE)
+    __I$use$fp                               0x000002e9   Thumb Code     0  iusefp.o(.text)
+    SVC_Table                                0x000002ec   Data           0  SVC_Table.o(SVC_TABLE)
+    __0printf$bare                           0x000002ed   Thumb Code     8  printfb.o(i.__0printf$bare)
+    __1printf$bare                           0x000002ed   Thumb Code     0  printfb.o(i.__0printf$bare)
+    __2printf                                0x000002ed   Thumb Code     0  printfb.o(i.__0printf$bare)
+    Free                                     0x00000301   Thumb Code     6  uart.o(.text)
+    Lock                                     0x00000307   Thumb Code    28  uart.o(.text)
+    LockRcv                                  0x00000323   Thumb Code    28  uart.o(.text)
+    LockSnd                                  0x0000033f   Thumb Code    28  uart.o(.text)
+    FreeRcv                                  0x0000035b   Thumb Code    28  uart.o(.text)
+    FreeSnd                                  0x00000377   Thumb Code    28  uart.o(.text)
+    UART0_IRQHandler                         0x00000393   Thumb Code    86  uart.o(.text)
+    UART1_IRQHandler                         0x000003e9   Thumb Code    88  uart.o(.text)
+    getFrequency                             0x00000441   Thumb Code    64  uart.o(.text)
     __RL_RTX_VER                             0x00000460   Number         0  rt_system.o ABSOLUTE
-    SystemInit                               0x000004a9   Thumb Code   290  system_lpc17xx.o(.text)
-    Free                                     0x00000619   Thumb Code     6  uart.o(.text)
-    Lock                                     0x0000061f   Thumb Code    28  uart.o(.text)
-    LockRcv                                  0x0000063b   Thumb Code    28  uart.o(.text)
-    LockSnd                                  0x00000657   Thumb Code    28  uart.o(.text)
-    FreeRcv                                  0x00000673   Thumb Code    28  uart.o(.text)
-    FreeSnd                                  0x0000068f   Thumb Code    28  uart.o(.text)
-    UART0_IRQHandler                         0x000006ab   Thumb Code    86  uart.o(.text)
-    UART1_IRQHandler                         0x00000701   Thumb Code    88  uart.o(.text)
-    getFrequency                             0x00000759   Thumb Code    64  uart.o(.text)
-    UARTInit                                 0x00000799   Thumb Code   176  uart.o(.text)
-    UARTSend                                 0x00000849   Thumb Code   112  uart.o(.text)
-    UARTSendChar                             0x000008b9   Thumb Code    24  uart.o(.text)
-    UARTRecieve                              0x000008d1   Thumb Code   134  uart.o(.text)
-    UARTReceiveChar                          0x00000957   Thumb Code    26  uart.o(.text)
-    create_block                             0x000009c5   Thumb Code   138  main.o(.text)
-    create_stack                             0x00000a4f   Thumb Code   102  main.o(.text)
-    draw_to_LCD                              0x00000ab5   Thumb Code   196  main.o(.text)
-    init_game                                0x00000b79   Thumb Code    90  main.o(.text)
-    move_block                               0x00000bd3   Thumb Code   136  main.o(.text)
-    init_tasks                               0x00000c5b   Thumb Code    36  main.o(.text)
-    main                                     0x00000c7f   Thumb Code    34  main.o(.text)
-    os_idle_demon                            0x00000ccd   Thumb Code     4  rtx_config.o(.text)
-    os_tmr_call                              0x00000cd1   Thumb Code     2  rtx_config.o(.text)
-    os_error                                 0x00000cd3   Thumb Code     4  rtx_config.o(.text)
-    LED_setup                                0x00000cd9   Thumb Code    34  led.o(.text)
-    LED_set                                  0x00000cfb   Thumb Code    26  led.o(.text)
-    LED_clear                                0x00000d15   Thumb Code    26  led.o(.text)
-    LED_display                              0x00000d2f   Thumb Code    38  led.o(.text)
-    joystick_setup                           0x00000d5d   Thumb Code    26  joystick.o(.text)
-    joystick_read                            0x00000d77   Thumb Code    12  joystick.o(.text)
-    pushbutton_setup                         0x00000d83   Thumb Code    26  joystick.o(.text)
-    pushbutton_read                          0x00000d9d   Thumb Code    10  joystick.o(.text)
-    potentiometer_setup                      0x00000db5   Thumb Code    44  potentiometer.o(.text)
-    potentiometer_read                       0x00000de1   Thumb Code    40  potentiometer.o(.text)
-    timer_setup                              0x00000e21   Thumb Code    46  timer.o(.text)
-    timer_read                               0x00000e4f   Thumb Code    16  timer.o(.text)
-    timer_reset                              0x00000e5f   Thumb Code    10  timer.o(.text)
-    timer_delay                              0x00000e69   Thumb Code    20  timer.o(.text)
-    GLCD_Init                                0x00001025   Thumb Code  1512  glcd_spi_lpc1700.o(.text)
-    GLCD_SetWindow                           0x0000160d   Thumb Code   168  glcd_spi_lpc1700.o(.text)
-    GLCD_WindowMax                           0x000016b5   Thumb Code    28  glcd_spi_lpc1700.o(.text)
-    GLCD_PutPixel                            0x000016d1   Thumb Code   118  glcd_spi_lpc1700.o(.text)
-    GLCD_SetTextColor                        0x00001747   Thumb Code     6  glcd_spi_lpc1700.o(.text)
-    GLCD_SetBackColor                        0x0000174d   Thumb Code     6  glcd_spi_lpc1700.o(.text)
-    GLCD_Clear                               0x00001753   Thumb Code    42  glcd_spi_lpc1700.o(.text)
-    GLCD_DrawChar                            0x0000177d   Thumb Code   150  glcd_spi_lpc1700.o(.text)
-    GLCD_DisplayChar                         0x00001813   Thumb Code    84  glcd_spi_lpc1700.o(.text)
-    GLCD_DisplayString                       0x00001867   Thumb Code    40  glcd_spi_lpc1700.o(.text)
-    GLCD_ClearLn                             0x0000188f   Thumb Code    94  glcd_spi_lpc1700.o(.text)
-    GLCD_Bargraph                            0x000018ed   Thumb Code    98  glcd_spi_lpc1700.o(.text)
-    GLCD_Bitmap                              0x0000194f   Thumb Code    82  glcd_spi_lpc1700.o(.text)
-    GLCD_ScrollVertical                      0x000019a1   Thumb Code   100  glcd_spi_lpc1700.o(.text)
-    GLCD_WrCmd                               0x00001a05   Thumb Code    12  glcd_spi_lpc1700.o(.text)
-    GLCD_WrReg                               0x00001a11   Thumb Code    16  glcd_spi_lpc1700.o(.text)
-    __aeabi_uldivmod                         0x00001a95   Thumb Code    98  uldiv.o(.text)
-    __aeabi_llsl                             0x00001af7   Thumb Code    30  llshl.o(.text)
-    _ll_shift_l                              0x00001af7   Thumb Code     0  llshl.o(.text)
-    __aeabi_llsr                             0x00001b15   Thumb Code    32  llushr.o(.text)
-    _ll_ushift_r                             0x00001b15   Thumb Code     0  llushr.o(.text)
-    __scatterload                            0x00001b35   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x00001b35   Thumb Code     0  init.o(.text)
-    __0printf$bare                           0x00001b59   Thumb Code     8  printfb.o(i.__0printf$bare)
-    __1printf$bare                           0x00001b59   Thumb Code     0  printfb.o(i.__0printf$bare)
-    __2printf                                0x00001b59   Thumb Code     0  printfb.o(i.__0printf$bare)
-    __scatterload_copy                       0x00001b69   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x00001b77   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x00001b79   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    _init_box                                0x00001b87   Thumb Code    70  rt_membox.o(i._init_box)
-    dbg_init                                 0x00001bf1   Thumb Code    34  hal_cm3.o(i.dbg_init)
-    dbg_task_notify                          0x00001c21   Thumb Code    32  hal_cm3.o(i.dbg_task_notify)
-    dbg_task_switch                          0x00001c41   Thumb Code    16  hal_cm3.o(i.dbg_task_switch)
-    os_tick_init                             0x00001c51   Thumb Code    32  rt_system.o(i.os_tick_init)
-    os_tick_irqack                           0x00001c79   Thumb Code     2  rt_system.o(i.os_tick_irqack)
-    rt_alloc_box                             0x00001c7b   Thumb Code    26  rt_membox.o(i.rt_alloc_box)
-    rt_chk_robin                             0x00001c95   Thumb Code    60  rt_robin.o(i.rt_chk_robin)
-    rt_dec_dly                               0x00001cdd   Thumb Code   106  rt_list.o(i.rt_dec_dly)
-    rt_dispatch                              0x00001d51   Thumb Code    60  rt_task.o(i.rt_dispatch)
-    rt_evt_psh                               0x00001d95   Thumb Code    72  rt_event.o(i.rt_evt_psh)
-    rt_free_box                              0x00001de1   Thumb Code    32  rt_membox.o(i.rt_free_box)
-    rt_get_first                             0x00001e01   Thumb Code    40  rt_list.o(i.rt_get_first)
-    rt_get_same_rdy_prio                     0x00001e29   Thumb Code    26  rt_list.o(i.rt_get_same_rdy_prio)
-    rt_init_robin                            0x00001e91   Thumb Code    14  rt_robin.o(i.rt_init_robin)
-    rt_init_stack                            0x00001ea9   Thumb Code    70  hal_cm3.o(i.rt_init_stack)
-    rt_mbx_psh                               0x00001ef9   Thumb Code   188  rt_mailbox.o(i.rt_mbx_psh)
-    rt_mut_init                              0x00001fb9   Thumb Code    16  rt_mutex.o(i.rt_mut_init)
-    rt_pop_req                               0x00001fc9   Thumb Code   106  rt_system.o(i.rt_pop_req)
-    rt_put_prio                              0x00002041   Thumb Code    54  rt_list.o(i.rt_put_prio)
-    rt_put_rdy_first                         0x00002079   Thumb Code    14  rt_list.o(i.rt_put_rdy_first)
-    rt_rmv_dly                               0x0000208d   Thumb Code    40  rt_list.o(i.rt_rmv_dly)
-    rt_rmv_list                              0x000020b5   Thumb Code    44  rt_list.o(i.rt_rmv_list)
-    rt_sem_psh                               0x000020e5   Thumb Code    46  rt_semaphore.o(i.rt_sem_psh)
-    rt_stk_check                             0x00002119   Thumb Code    28  rt_system.o(i.rt_stk_check)
-    rt_switch_req                            0x0000213d   Thumb Code    30  rt_task.o(i.rt_switch_req)
-    rt_sys_init                              0x00002165   Thumb Code   266  rt_task.o(i.rt_sys_init)
-    rt_systick                               0x000022bd   Thumb Code    48  rt_system.o(i.rt_systick)
-    rt_tmr_tick                              0x000022f9   Thumb Code    56  rt_timer.o(i.rt_tmr_tick)
-    rt_tsk_create                            0x00002339   Thumb Code   126  rt_task.o(i.rt_tsk_create)
-    rt_tsk_delete                            0x000023cd   Thumb Code   162  rt_task.o(i.rt_tsk_delete)
-    rt_tsk_pass                              0x00002489   Thumb Code    38  rt_task.o(i.rt_tsk_pass)
-    os_maxtaskrun                            0x000024b8   Data           2  rtx_config.o(.constdata)
-    os_stackinfo                             0x000024bc   Data           4  rtx_config.o(.constdata)
-    os_rrobin                                0x000024c0   Data           4  rtx_config.o(.constdata)
-    os_trv                                   0x000024c4   Data           4  rtx_config.o(.constdata)
-    os_flags                                 0x000024c8   Data           1  rtx_config.o(.constdata)
-    os_clockrate                             0x000024cc   Data           4  rtx_config.o(.constdata)
-    os_timernum                              0x000024d0   Data           4  rtx_config.o(.constdata)
-    mp_tcb_size                              0x000024d4   Data           2  rtx_config.o(.constdata)
-    mp_stk_size                              0x000024d8   Data           4  rtx_config.o(.constdata)
-    os_fifo_size                             0x000024dc   Data           1  rtx_config.o(.constdata)
-    mp_tmr_size                              0x000024de   Data           2  rtx_config.o(.constdata)
-    led_pos                                  0x000024e0   Data           8  led.o(.constdata)
-    Font_6x8_h                               0x000024e8   Data         896  glcd_spi_lpc1700.o(.constdata)
-    Font_16x24_h                             0x00002868   Data        5376  glcd_spi_lpc1700.o(.constdata)
-    Region$$Table$$Base                      0x00003d68   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00003d98   Number         0  anon$$obj.o(Region$$Table)
+    UARTInit                                 0x00000481   Thumb Code   176  uart.o(.text)
+    UARTSend                                 0x00000531   Thumb Code   112  uart.o(.text)
+    UARTSendChar                             0x000005a1   Thumb Code    24  uart.o(.text)
+    UARTRecieve                              0x000005b9   Thumb Code   134  uart.o(.text)
+    UARTReceiveChar                          0x0000063f   Thumb Code    26  uart.o(.text)
+    sendchar                                 0x000006ad   Thumb Code    64  retarget.o(.text)
+    getkey                                   0x000006ed   Thumb Code    32  retarget.o(.text)
+    fputc                                    0x0000070d   Thumb Code    14  retarget.o(.text)
+    fgetc                                    0x0000071b   Thumb Code    20  retarget.o(.text)
+    ferror                                   0x0000072f   Thumb Code     8  retarget.o(.text)
+    _ttywrch                                 0x00000737   Thumb Code    12  retarget.o(.text)
+    _sys_exit                                0x00000743   Thumb Code     4  retarget.o(.text)
+    SystemCoreClockUpdate                    0x0000074d   Thumb Code   424  system_lpc17xx.o(.text)
+    SystemInit                               0x000008f5   Thumb Code   290  system_lpc17xx.o(.text)
+    EINT3_IRQHandler                         0x00000a65   Thumb Code    36  main.o(.text)
+    drop_block                               0x00000a89   Thumb Code   502  main.o(.text)
+    update_speed                             0x00000c7f   Thumb Code    78  main.o(.text)
+    move_block                               0x00000ccd   Thumb Code   186  main.o(.text)
+    init_tasks                               0x00000d87   Thumb Code    76  main.o(.text)
+    main                                     0x00000dd3   Thumb Code    34  main.o(.text)
+    draw_to_LCD                              0x00000ea9   Thumb Code   196  lcd_display.o(.text)
+    create_block                             0x00000f75   Thumb Code   138  game_state.o(.text)
+    create_stack                             0x00000fff   Thumb Code   102  game_state.o(.text)
+    init_game                                0x00001065   Thumb Code    88  game_state.o(.text)
+    joystick_setup                           0x000010c5   Thumb Code    26  joystick.o(.text)
+    joystick_read                            0x000010df   Thumb Code    12  joystick.o(.text)
+    pushbutton_setup                         0x000010eb   Thumb Code    70  joystick.o(.text)
+    pushbutton_read                          0x00001131   Thumb Code    10  joystick.o(.text)
+    potentiometer_setup                      0x00001151   Thumb Code    44  potentiometer.o(.text)
+    potentiometer_read                       0x0000117d   Thumb Code    40  potentiometer.o(.text)
+    timer_setup                              0x000011bd   Thumb Code    46  timer.o(.text)
+    timer_read                               0x000011eb   Thumb Code    16  timer.o(.text)
+    timer_reset                              0x000011fb   Thumb Code    10  timer.o(.text)
+    timer_delay                              0x00001205   Thumb Code    20  timer.o(.text)
+    GLCD_Init                                0x000013c1   Thumb Code  1512  glcd_spi_lpc1700.o(.text)
+    GLCD_SetWindow                           0x000019a9   Thumb Code   168  glcd_spi_lpc1700.o(.text)
+    GLCD_WindowMax                           0x00001a51   Thumb Code    28  glcd_spi_lpc1700.o(.text)
+    GLCD_PutPixel                            0x00001a6d   Thumb Code   118  glcd_spi_lpc1700.o(.text)
+    GLCD_SetTextColor                        0x00001ae3   Thumb Code     6  glcd_spi_lpc1700.o(.text)
+    GLCD_SetBackColor                        0x00001ae9   Thumb Code     6  glcd_spi_lpc1700.o(.text)
+    GLCD_Clear                               0x00001aef   Thumb Code    42  glcd_spi_lpc1700.o(.text)
+    GLCD_DrawChar                            0x00001b19   Thumb Code   150  glcd_spi_lpc1700.o(.text)
+    GLCD_DisplayChar                         0x00001baf   Thumb Code    84  glcd_spi_lpc1700.o(.text)
+    GLCD_DisplayString                       0x00001c03   Thumb Code    40  glcd_spi_lpc1700.o(.text)
+    GLCD_ClearLn                             0x00001c2b   Thumb Code    94  glcd_spi_lpc1700.o(.text)
+    GLCD_Bargraph                            0x00001c89   Thumb Code    98  glcd_spi_lpc1700.o(.text)
+    GLCD_Bitmap                              0x00001ceb   Thumb Code    82  glcd_spi_lpc1700.o(.text)
+    GLCD_ScrollVertical                      0x00001d3d   Thumb Code   100  glcd_spi_lpc1700.o(.text)
+    GLCD_WrCmd                               0x00001da1   Thumb Code    12  glcd_spi_lpc1700.o(.text)
+    GLCD_WrReg                               0x00001dad   Thumb Code    16  glcd_spi_lpc1700.o(.text)
+    __aeabi_uldivmod                         0x00001e31   Thumb Code    98  uldiv.o(.text)
+    __aeabi_dadd                             0x00001e93   Thumb Code   322  dadd.o(.text)
+    __aeabi_dsub                             0x00001fd5   Thumb Code     6  dadd.o(.text)
+    __aeabi_drsub                            0x00001fdb   Thumb Code     6  dadd.o(.text)
+    __aeabi_ui2d                             0x00001fe1   Thumb Code    26  dfltui.o(.text)
+    __aeabi_d2uiz                            0x00001ffb   Thumb Code    50  dfixui.o(.text)
+    __aeabi_llsl                             0x0000202d   Thumb Code    30  llshl.o(.text)
+    _ll_shift_l                              0x0000202d   Thumb Code     0  llshl.o(.text)
+    __aeabi_llsr                             0x0000204b   Thumb Code    32  llushr.o(.text)
+    _ll_ushift_r                             0x0000204b   Thumb Code     0  llushr.o(.text)
+    __aeabi_lasr                             0x0000206b   Thumb Code    36  llsshr.o(.text)
+    _ll_sshift_r                             0x0000206b   Thumb Code     0  llsshr.o(.text)
+    _double_round                            0x0000208f   Thumb Code    26  depilogue.o(.text)
+    _double_epilogue                         0x000020a9   Thumb Code   164  depilogue.o(.text)
+    __aeabi_cdrcmple                         0x0000214d   Thumb Code    38  cdrcmple.o(.text)
+    __scatterload                            0x00002175   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x00002175   Thumb Code     0  init.o(.text)
+    __scatterload_copy                       0x00002199   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x000021a7   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x000021a9   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    _init_box                                0x000021b7   Thumb Code    70  rt_membox.o(i._init_box)
+    ceil                                     0x00002221   Thumb Code   204  ceil.o(i.ceil)
+    dbg_init                                 0x000022fd   Thumb Code    34  hal_cm3.o(i.dbg_init)
+    dbg_task_notify                          0x0000232d   Thumb Code    32  hal_cm3.o(i.dbg_task_notify)
+    dbg_task_switch                          0x0000234d   Thumb Code    16  hal_cm3.o(i.dbg_task_switch)
+    os_tick_init                             0x0000235d   Thumb Code    32  rt_system.o(i.os_tick_init)
+    os_tick_irqack                           0x00002385   Thumb Code     2  rt_system.o(i.os_tick_irqack)
+    rt_alloc_box                             0x00002387   Thumb Code    26  rt_membox.o(i.rt_alloc_box)
+    rt_block                                 0x000023a1   Thumb Code    48  rt_task.o(i.rt_block)
+    rt_chk_robin                             0x000023d9   Thumb Code    60  rt_robin.o(i.rt_chk_robin)
+    rt_dec_dly                               0x00002421   Thumb Code   106  rt_list.o(i.rt_dec_dly)
+    rt_dispatch                              0x00002495   Thumb Code    60  rt_task.o(i.rt_dispatch)
+    rt_evt_psh                               0x000024d9   Thumb Code    72  rt_event.o(i.rt_evt_psh)
+    rt_evt_set                               0x00002525   Thumb Code    90  rt_event.o(i.rt_evt_set)
+    rt_evt_wait                              0x00002585   Thumb Code    58  rt_event.o(i.rt_evt_wait)
+    rt_free_box                              0x000025c5   Thumb Code    32  rt_membox.o(i.rt_free_box)
+    rt_get_first                             0x000025e5   Thumb Code    40  rt_list.o(i.rt_get_first)
+    rt_get_same_rdy_prio                     0x0000260d   Thumb Code    26  rt_list.o(i.rt_get_same_rdy_prio)
+    rt_init_robin                            0x00002675   Thumb Code    14  rt_robin.o(i.rt_init_robin)
+    rt_init_stack                            0x0000268d   Thumb Code    70  hal_cm3.o(i.rt_init_stack)
+    rt_mbx_psh                               0x000026dd   Thumb Code   188  rt_mailbox.o(i.rt_mbx_psh)
+    rt_mut_init                              0x0000279d   Thumb Code    16  rt_mutex.o(i.rt_mut_init)
+    rt_mut_release                           0x000027ad   Thumb Code   164  rt_mutex.o(i.rt_mut_release)
+    rt_mut_wait                              0x00002859   Thumb Code    96  rt_mutex.o(i.rt_mut_wait)
+    rt_pop_req                               0x000028bd   Thumb Code   106  rt_system.o(i.rt_pop_req)
+    rt_put_dly                               0x00002935   Thumb Code    68  rt_list.o(i.rt_put_dly)
+    rt_put_prio                              0x0000297d   Thumb Code    54  rt_list.o(i.rt_put_prio)
+    rt_put_rdy_first                         0x000029b5   Thumb Code    14  rt_list.o(i.rt_put_rdy_first)
+    rt_resort_prio                           0x000029c9   Thumb Code    46  rt_list.o(i.rt_resort_prio)
+    rt_rmv_dly                               0x000029fd   Thumb Code    40  rt_list.o(i.rt_rmv_dly)
+    rt_rmv_list                              0x00002a25   Thumb Code    44  rt_list.o(i.rt_rmv_list)
+    rt_sem_psh                               0x00002a55   Thumb Code    46  rt_semaphore.o(i.rt_sem_psh)
+    rt_stk_check                             0x00002a89   Thumb Code    28  rt_system.o(i.rt_stk_check)
+    rt_switch_req                            0x00002aad   Thumb Code    30  rt_task.o(i.rt_switch_req)
+    rt_sys_init                              0x00002ad5   Thumb Code   266  rt_task.o(i.rt_sys_init)
+    rt_systick                               0x00002c2d   Thumb Code    48  rt_system.o(i.rt_systick)
+    rt_tmr_tick                              0x00002c69   Thumb Code    56  rt_timer.o(i.rt_tmr_tick)
+    rt_tsk_create                            0x00002ca9   Thumb Code   126  rt_task.o(i.rt_tsk_create)
+    rt_tsk_delete                            0x00002d3d   Thumb Code   162  rt_task.o(i.rt_tsk_delete)
+    rt_tsk_pass                              0x00002df9   Thumb Code    38  rt_task.o(i.rt_tsk_pass)
+    os_maxtaskrun                            0x00002e28   Data           2  rtx_config.o(.constdata)
+    os_stackinfo                             0x00002e2c   Data           4  rtx_config.o(.constdata)
+    os_rrobin                                0x00002e30   Data           4  rtx_config.o(.constdata)
+    os_trv                                   0x00002e34   Data           4  rtx_config.o(.constdata)
+    os_flags                                 0x00002e38   Data           1  rtx_config.o(.constdata)
+    os_clockrate                             0x00002e3c   Data           4  rtx_config.o(.constdata)
+    os_timernum                              0x00002e40   Data           4  rtx_config.o(.constdata)
+    mp_tcb_size                              0x00002e44   Data           2  rtx_config.o(.constdata)
+    mp_stk_size                              0x00002e48   Data           4  rtx_config.o(.constdata)
+    os_fifo_size                             0x00002e4c   Data           1  rtx_config.o(.constdata)
+    mp_tmr_size                              0x00002e4e   Data           2  rtx_config.o(.constdata)
+    led_pos                                  0x00002e50   Data           8  led.o(.constdata)
+    Font_6x8_h                               0x00002e58   Data         896  glcd_spi_lpc1700.o(.constdata)
+    Font_16x24_h                             0x000031d8   Data        5376  glcd_spi_lpc1700.o(.constdata)
+    Region$$Table$$Base                      0x000046d8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00004708   Number         0  anon$$obj.o(Region$$Table)
     __initial_sp                             0x10002000   Data           0  startup_lpc17xx.o(STACK)
-    SystemCoreClock                          0x2007c000   Data           4  system_lpc17xx.o(.data)
-    uart_init_called                         0x2007c004   Data           1  retarget.o(.data)
-    __stdout                                 0x2007c008   Data           4  retarget.o(.data)
-    __stdin                                  0x2007c00c   Data           4  retarget.o(.data)
-    ITM_RxBuffer                             0x2007c010   Data           4  uart.o(.data)
-    UART0TxEmpty                             0x2007c014   Data           1  uart.o(.data)
-    UART1TxEmpty                             0x2007c015   Data           1  uart.o(.data)
-    UART0Count                               0x2007c018   Data           4  uart.o(.data)
-    UART1Count                               0x2007c01c   Data           4  uart.o(.data)
-    i                                        0x2007c020   Data           4  uart.o(.data)
-    UART0Status                              0x2007c024   Data           4  uart.o(.data)
-    UART1Status                              0x2007c028   Data           4  uart.o(.data)
-    RcvLock0                                 0x2007c02c   Data           1  uart.o(.data)
-    SndLock0                                 0x2007c02d   Data           1  uart.o(.data)
-    RcvLock1                                 0x2007c02e   Data           1  uart.o(.data)
-    SndLock1                                 0x2007c02f   Data           1  uart.o(.data)
-    block                                    0x2007c030   Data           4  main.o(.data)
-    stack                                    0x2007c034   Data           4  main.o(.data)
-    tid_move_block                           0x2007c038   Data           4  main.o(.data)
-    m_tmr                                    0x2007c03c   Data           4  rtx_config.o(.data)
-    os_tsk                                   0x2007c04c   Data           8  rt_task.o(.data)
-    dbg_msg                                  0x2007c054   Data           1  hal_cm3.o(.data)
-    os_tick_irqn                             0x2007c05c   Data           4  rt_system.o(.data)
-    os_robin                                 0x2007c060   Data           8  rt_robin.o(.data)
-    os_time                                  0x2007c068   Data           4  rt_time.o(.data)
-    os_tmr                                   0x2007c06c   Data           8  rt_timer.o(.data)
-    UART0Buffer                              0x2007c074   Data          64  uart.o(.bss)
-    UART1Buffer                              0x2007c0b4   Data          64  uart.o(.bss)
-    sem1                                     0x2007c0f4   Data          12  main.o(.bss)
-    mp_tcb                                   0x2007c100   Data         300  rtx_config.o(.bss)
-    mp_stk                                   0x2007c230   Data        3600  rtx_config.o(.bss)
-    os_fifo                                  0x2007d040   Data         132  rtx_config.o(.bss)
-    os_active_TCB                            0x2007d0c4   Data          24  rtx_config.o(.bss)
-    os_idle_TCB                              0x2007d0dc   Data          48  rt_task.o(.bss)
-    os_rdy                                   0x2007d10c   Data          24  rt_list.o(.bss)
-    os_dly                                   0x2007d124   Data          24  rt_list.o(.bss)
+    m_tmr                                    0x2007c000   Data           4  rtx_config.o(.data)
+    ITM_RxBuffer                             0x2007c004   Data           4  uart.o(.data)
+    UART0TxEmpty                             0x2007c008   Data           1  uart.o(.data)
+    UART1TxEmpty                             0x2007c009   Data           1  uart.o(.data)
+    UART0Count                               0x2007c00c   Data           4  uart.o(.data)
+    UART1Count                               0x2007c010   Data           4  uart.o(.data)
+    i                                        0x2007c014   Data           4  uart.o(.data)
+    UART0Status                              0x2007c018   Data           4  uart.o(.data)
+    UART1Status                              0x2007c01c   Data           4  uart.o(.data)
+    RcvLock0                                 0x2007c020   Data           1  uart.o(.data)
+    SndLock0                                 0x2007c021   Data           1  uart.o(.data)
+    RcvLock1                                 0x2007c022   Data           1  uart.o(.data)
+    SndLock1                                 0x2007c023   Data           1  uart.o(.data)
+    uart_init_called                         0x2007c024   Data           1  retarget.o(.data)
+    __stdout                                 0x2007c028   Data           4  retarget.o(.data)
+    __stdin                                  0x2007c02c   Data           4  retarget.o(.data)
+    SystemCoreClock                          0x2007c030   Data           4  system_lpc17xx.o(.data)
+    block                                    0x2007c034   Data           4  main.o(.data)
+    stack                                    0x2007c038   Data           4  main.o(.data)
+    state                                    0x2007c03c   Data           4  main.o(.data)
+    tid_move_block                           0x2007c040   Data           4  main.o(.data)
+    tid_update_speed                         0x2007c044   Data           4  main.o(.data)
+    tid_drop_block                           0x2007c048   Data           4  main.o(.data)
+    os_tsk                                   0x2007c058   Data           8  rt_task.o(.data)
+    dbg_msg                                  0x2007c060   Data           1  hal_cm3.o(.data)
+    os_tick_irqn                             0x2007c068   Data           4  rt_system.o(.data)
+    os_robin                                 0x2007c06c   Data           8  rt_robin.o(.data)
+    os_time                                  0x2007c074   Data           4  rt_time.o(.data)
+    os_tmr                                   0x2007c078   Data           8  rt_timer.o(.data)
+    mp_tcb                                   0x2007c080   Data         300  rtx_config.o(.bss)
+    mp_stk                                   0x2007c1b0   Data        3600  rtx_config.o(.bss)
+    os_fifo                                  0x2007cfc0   Data         132  rtx_config.o(.bss)
+    os_active_TCB                            0x2007d044   Data          24  rtx_config.o(.bss)
+    UART0Buffer                              0x2007d05c   Data          64  uart.o(.bss)
+    UART1Buffer                              0x2007d09c   Data          64  uart.o(.bss)
+    sem_speed                                0x2007d0dc   Data          12  main.o(.bss)
+    sem_pos                                  0x2007d0e8   Data          12  main.o(.bss)
+    sem_button                               0x2007d0f4   Data          12  main.o(.bss)
+    os_idle_TCB                              0x2007d100   Data          48  rt_task.o(.bss)
+    os_rdy                                   0x2007d130   Data          24  rt_list.o(.bss)
+    os_dly                                   0x2007d148   Data          24  rt_list.o(.bss)
 
 
 
@@ -1002,82 +1074,99 @@ Memory Map of the image
 
   Image Entry point : 0x000000cd
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00003e0c, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00004788, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00003d98, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00004708, Max: 0x00080000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x000000cc   Data   RO            3    RESET               startup_lpc17xx.o
-    0x000000cc   0x00000000   Code   RO          920  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x000000cc   0x00000004   Code   RO         1185    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x000000d0   0x00000004   Code   RO         1188    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x000000d4   0x00000000   Code   RO         1190    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x000000d4   0x00000008   Code   RO         1191    .ARM.Collect$$$$00000009  mc_w.l(entry8.o)
-    0x000000dc   0x00000004   Code   RO         1186    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
-    0x000000e0   0x00000154   Code   RO          472    .emb_text           RTX_CM3.LIB(hal_cm3.o)
+    0x000000cc   0x00000000   Code   RO          997  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x000000cc   0x00000004   Code   RO         1268    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x000000d0   0x00000004   Code   RO         1271    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x000000d4   0x00000000   Code   RO         1273    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x000000d4   0x00000008   Code   RO         1274    .ARM.Collect$$$$00000009  mc_w.l(entry8.o)
+    0x000000dc   0x00000004   Code   RO         1269    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x000000e0   0x00000154   Code   RO          587    .emb_text           RTX_CM3.LIB(hal_cm3.o)
     0x00000234   0x00000024   Code   RO            5    .text               startup_lpc17xx.o
-    0x00000258   0x000000a0   Code   RO           56    .text               retarget.o
-    0x000002f8   0x00000004   Code   RO          731    SVC_TABLE           RTX_CM3.LIB(SVC_Table.o)
+    0x00000258   0x0000000a   Code   RO           13    .text               rtx_config.o
+    0x00000262   0x00000002   PAD
+    0x00000264   0x00000084   Code   RO          251    .text               led.o
+    0x000002e8   0x00000000   Code   RO         1283    .text               mc_w.l(iusefp.o)
+    0x000002e8   0x00000004   Code   RO          846    SVC_TABLE           RTX_CM3.LIB(SVC_Table.o)
+    0x000002ec   0x00000010   Code   RO         1003    i.__0printf$bare    mc_w.l(printfb.o)
     0x000002fc   0x00000004   Code   RO            4    .ARM.__at_0x02FC    startup_lpc17xx.o
-    0x00000300   0x00000318   Code   RO           15    .text               system_lpc17xx.o
-    0x00000618   0x000003ac   Code   RO           83    .text               uart.o
-    0x000009c4   0x00000308   Code   RO          115    .text               main.o
-    0x00000ccc   0x0000000a   Code   RO          156    .text               rtx_config.o
-    0x00000cd6   0x00000002   PAD
-    0x00000cd8   0x00000084   Code   RO          181    .text               led.o
-    0x00000d5c   0x00000058   Code   RO          208    .text               joystick.o
-    0x00000db4   0x0000006c   Code   RO          228    .text               potentiometer.o
-    0x00000e20   0x0000006c   Code   RO          248    .text               timer.o
-    0x00000e8c   0x00000c08   Code   RO          314    .text               glcd_spi_lpc1700.o
-    0x00001a94   0x00000062   Code   RO          923    .text               mc_w.l(uldiv.o)
-    0x00001af6   0x0000001e   Code   RO         1194    .text               mc_w.l(llshl.o)
-    0x00001b14   0x00000020   Code   RO         1196    .text               mc_w.l(llushr.o)
-    0x00001b34   0x00000024   Code   RO         1209    .text               mc_w.l(init.o)
-    0x00001b58   0x00000010   Code   RO          926    i.__0printf$bare    mc_w.l(printfb.o)
-    0x00001b68   0x0000000e   Code   RO         1217    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x00001b76   0x00000002   Code   RO         1218    i.__scatterload_null  mc_w.l(handlers.o)
-    0x00001b78   0x0000000e   Code   RO         1219    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x00001b86   0x00000046   Code   RO          698    i._init_box         RTX_CM3.LIB(rt_membox.o)
-    0x00001bcc   0x00000022   Code   RO          933    i._printf_core      mc_w.l(printfb.o)
-    0x00001bee   0x00000002   PAD
-    0x00001bf0   0x00000030   Code   RO          473    i.dbg_init          RTX_CM3.LIB(hal_cm3.o)
-    0x00001c20   0x00000020   Code   RO          474    i.dbg_task_notify   RTX_CM3.LIB(hal_cm3.o)
-    0x00001c40   0x00000010   Code   RO          475    i.dbg_task_switch   RTX_CM3.LIB(hal_cm3.o)
-    0x00001c50   0x00000028   Code   RO          514    i.os_tick_init      RTX_CM3.LIB(rt_system.o)
-    0x00001c78   0x00000002   Code   RO          515    i.os_tick_irqack    RTX_CM3.LIB(rt_system.o)
-    0x00001c7a   0x0000001a   Code   RO          699    i.rt_alloc_box      RTX_CM3.LIB(rt_membox.o)
-    0x00001c94   0x00000048   Code   RO          676    i.rt_chk_robin      RTX_CM3.LIB(rt_robin.o)
-    0x00001cdc   0x00000074   Code   RO          597    i.rt_dec_dly        RTX_CM3.LIB(rt_list.o)
-    0x00001d50   0x00000044   Code   RO          346    i.rt_dispatch       RTX_CM3.LIB(rt_task.o)
-    0x00001d94   0x0000004c   Code   RO          737    i.rt_evt_psh        RTX_CM3.LIB(rt_event.o)
-    0x00001de0   0x00000020   Code   RO          700    i.rt_free_box       RTX_CM3.LIB(rt_membox.o)
-    0x00001e00   0x00000028   Code   RO          598    i.rt_get_first      RTX_CM3.LIB(rt_list.o)
-    0x00001e28   0x00000024   Code   RO          599    i.rt_get_same_rdy_prio  RTX_CM3.LIB(rt_list.o)
-    0x00001e4c   0x00000044   Code   RO          347    i.rt_init_context   RTX_CM3.LIB(rt_task.o)
-    0x00001e90   0x00000018   Code   RO          677    i.rt_init_robin     RTX_CM3.LIB(rt_robin.o)
-    0x00001ea8   0x00000050   Code   RO          476    i.rt_init_stack     RTX_CM3.LIB(hal_cm3.o)
-    0x00001ef8   0x000000c0   Code   RO          780    i.rt_mbx_psh        RTX_CM3.LIB(rt_mailbox.o)
-    0x00001fb8   0x00000010   Code   RO          444    i.rt_mut_init       RTX_CM3.LIB(rt_mutex.o)
-    0x00001fc8   0x00000078   Code   RO          516    i.rt_pop_req        RTX_CM3.LIB(rt_system.o)
-    0x00002040   0x00000036   Code   RO          602    i.rt_put_prio       RTX_CM3.LIB(rt_list.o)
-    0x00002076   0x00000002   PAD
-    0x00002078   0x00000014   Code   RO          603    i.rt_put_rdy_first  RTX_CM3.LIB(rt_list.o)
-    0x0000208c   0x00000028   Code   RO          605    i.rt_rmv_dly        RTX_CM3.LIB(rt_list.o)
-    0x000020b4   0x00000030   Code   RO          606    i.rt_rmv_list       RTX_CM3.LIB(rt_list.o)
-    0x000020e4   0x00000034   Code   RO          826    i.rt_sem_psh        RTX_CM3.LIB(rt_semaphore.o)
-    0x00002118   0x00000024   Code   RO          519    i.rt_stk_check      RTX_CM3.LIB(rt_system.o)
-    0x0000213c   0x00000028   Code   RO          348    i.rt_switch_req     RTX_CM3.LIB(rt_task.o)
-    0x00002164   0x00000158   Code   RO          349    i.rt_sys_init       RTX_CM3.LIB(rt_task.o)
-    0x000022bc   0x0000003c   Code   RO          521    i.rt_systick        RTX_CM3.LIB(rt_system.o)
-    0x000022f8   0x00000040   Code   RO          895    i.rt_tmr_tick       RTX_CM3.LIB(rt_timer.o)
-    0x00002338   0x00000094   Code   RO          350    i.rt_tsk_create     RTX_CM3.LIB(rt_task.o)
-    0x000023cc   0x000000bc   Code   RO          351    i.rt_tsk_delete     RTX_CM3.LIB(rt_task.o)
-    0x00002488   0x00000030   Code   RO          352    i.rt_tsk_pass       RTX_CM3.LIB(rt_task.o)
-    0x000024b8   0x00000028   Data   RO          158    .constdata          rtx_config.o
-    0x000024e0   0x00000008   Data   RO          182    .constdata          led.o
-    0x000024e8   0x00001880   Data   RO          315    .constdata          glcd_spi_lpc1700.o
-    0x00003d68   0x00000030   Data   RO         1215    Region$$Table       anon$$obj.o
+    0x00000300   0x000003ac   Code   RO           39    .text               uart.o
+    0x000006ac   0x000000a0   Code   RO           83    .text               retarget.o
+    0x0000074c   0x00000318   Code   RO          107    .text               system_lpc17xx.o
+    0x00000a64   0x00000444   Code   RO          140    .text               main.o
+    0x00000ea8   0x000000cc   Code   RO          207    .text               lcd_display.o
+    0x00000f74   0x00000150   Code   RO          231    .text               game_state.o
+    0x000010c4   0x0000008c   Code   RO          274    .text               joystick.o
+    0x00001150   0x0000006c   Code   RO          301    .text               potentiometer.o
+    0x000011bc   0x0000006c   Code   RO          324    .text               timer.o
+    0x00001228   0x00000c08   Code   RO          387    .text               glcd_spi_lpc1700.o
+    0x00001e30   0x00000062   Code   RO         1000    .text               mc_w.l(uldiv.o)
+    0x00001e92   0x0000014e   Code   RO         1262    .text               mf_w.l(dadd.o)
+    0x00001fe0   0x0000001a   Code   RO         1264    .text               mf_w.l(dfltui.o)
+    0x00001ffa   0x00000032   Code   RO         1266    .text               mf_w.l(dfixui.o)
+    0x0000202c   0x0000001e   Code   RO         1277    .text               mc_w.l(llshl.o)
+    0x0000204a   0x00000020   Code   RO         1279    .text               mc_w.l(llushr.o)
+    0x0000206a   0x00000024   Code   RO         1281    .text               mc_w.l(llsshr.o)
+    0x0000208e   0x000000be   Code   RO         1284    .text               mf_w.l(depilogue.o)
+    0x0000214c   0x00000028   Code   RO         1292    .text               mf_w.l(cdrcmple.o)
+    0x00002174   0x00000024   Code   RO         1294    .text               mc_w.l(init.o)
+    0x00002198   0x0000000e   Code   RO         1298    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x000021a6   0x00000002   Code   RO         1299    i.__scatterload_null  mc_w.l(handlers.o)
+    0x000021a8   0x0000000e   Code   RO         1300    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x000021b6   0x00000046   Code   RO          813    i._init_box         RTX_CM3.LIB(rt_membox.o)
+    0x000021fc   0x00000022   Code   RO         1010    i._printf_core      mc_w.l(printfb.o)
+    0x0000221e   0x00000002   PAD
+    0x00002220   0x000000dc   Code   RO          994    i.ceil              m_ws.l(ceil.o)
+    0x000022fc   0x00000030   Code   RO          588    i.dbg_init          RTX_CM3.LIB(hal_cm3.o)
+    0x0000232c   0x00000020   Code   RO          589    i.dbg_task_notify   RTX_CM3.LIB(hal_cm3.o)
+    0x0000234c   0x00000010   Code   RO          590    i.dbg_task_switch   RTX_CM3.LIB(hal_cm3.o)
+    0x0000235c   0x00000028   Code   RO          629    i.os_tick_init      RTX_CM3.LIB(rt_system.o)
+    0x00002384   0x00000002   Code   RO          630    i.os_tick_irqack    RTX_CM3.LIB(rt_system.o)
+    0x00002386   0x0000001a   Code   RO          814    i.rt_alloc_box      RTX_CM3.LIB(rt_membox.o)
+    0x000023a0   0x00000038   Code   RO          418    i.rt_block          RTX_CM3.LIB(rt_task.o)
+    0x000023d8   0x00000048   Code   RO          791    i.rt_chk_robin      RTX_CM3.LIB(rt_robin.o)
+    0x00002420   0x00000074   Code   RO          712    i.rt_dec_dly        RTX_CM3.LIB(rt_list.o)
+    0x00002494   0x00000044   Code   RO          419    i.rt_dispatch       RTX_CM3.LIB(rt_task.o)
+    0x000024d8   0x0000004c   Code   RO          520    i.rt_evt_psh        RTX_CM3.LIB(rt_event.o)
+    0x00002524   0x00000060   Code   RO          521    i.rt_evt_set        RTX_CM3.LIB(rt_event.o)
+    0x00002584   0x00000040   Code   RO          522    i.rt_evt_wait       RTX_CM3.LIB(rt_event.o)
+    0x000025c4   0x00000020   Code   RO          815    i.rt_free_box       RTX_CM3.LIB(rt_membox.o)
+    0x000025e4   0x00000028   Code   RO          713    i.rt_get_first      RTX_CM3.LIB(rt_list.o)
+    0x0000260c   0x00000024   Code   RO          714    i.rt_get_same_rdy_prio  RTX_CM3.LIB(rt_list.o)
+    0x00002630   0x00000044   Code   RO          420    i.rt_init_context   RTX_CM3.LIB(rt_task.o)
+    0x00002674   0x00000018   Code   RO          792    i.rt_init_robin     RTX_CM3.LIB(rt_robin.o)
+    0x0000268c   0x00000050   Code   RO          591    i.rt_init_stack     RTX_CM3.LIB(hal_cm3.o)
+    0x000026dc   0x000000c0   Code   RO          853    i.rt_mbx_psh        RTX_CM3.LIB(rt_mailbox.o)
+    0x0000279c   0x00000010   Code   RO          563    i.rt_mut_init       RTX_CM3.LIB(rt_mutex.o)
+    0x000027ac   0x000000ac   Code   RO          564    i.rt_mut_release    RTX_CM3.LIB(rt_mutex.o)
+    0x00002858   0x00000064   Code   RO          565    i.rt_mut_wait       RTX_CM3.LIB(rt_mutex.o)
+    0x000028bc   0x00000078   Code   RO          631    i.rt_pop_req        RTX_CM3.LIB(rt_system.o)
+    0x00002934   0x00000048   Code   RO          716    i.rt_put_dly        RTX_CM3.LIB(rt_list.o)
+    0x0000297c   0x00000036   Code   RO          717    i.rt_put_prio       RTX_CM3.LIB(rt_list.o)
+    0x000029b2   0x00000002   PAD
+    0x000029b4   0x00000014   Code   RO          718    i.rt_put_rdy_first  RTX_CM3.LIB(rt_list.o)
+    0x000029c8   0x00000034   Code   RO          719    i.rt_resort_prio    RTX_CM3.LIB(rt_list.o)
+    0x000029fc   0x00000028   Code   RO          720    i.rt_rmv_dly        RTX_CM3.LIB(rt_list.o)
+    0x00002a24   0x00000030   Code   RO          721    i.rt_rmv_list       RTX_CM3.LIB(rt_list.o)
+    0x00002a54   0x00000034   Code   RO          899    i.rt_sem_psh        RTX_CM3.LIB(rt_semaphore.o)
+    0x00002a88   0x00000024   Code   RO          634    i.rt_stk_check      RTX_CM3.LIB(rt_system.o)
+    0x00002aac   0x00000028   Code   RO          421    i.rt_switch_req     RTX_CM3.LIB(rt_task.o)
+    0x00002ad4   0x00000158   Code   RO          422    i.rt_sys_init       RTX_CM3.LIB(rt_task.o)
+    0x00002c2c   0x0000003c   Code   RO          636    i.rt_systick        RTX_CM3.LIB(rt_system.o)
+    0x00002c68   0x00000040   Code   RO          968    i.rt_tmr_tick       RTX_CM3.LIB(rt_timer.o)
+    0x00002ca8   0x00000094   Code   RO          423    i.rt_tsk_create     RTX_CM3.LIB(rt_task.o)
+    0x00002d3c   0x000000bc   Code   RO          424    i.rt_tsk_delete     RTX_CM3.LIB(rt_task.o)
+    0x00002df8   0x00000030   Code   RO          425    i.rt_tsk_pass       RTX_CM3.LIB(rt_task.o)
+    0x00002e28   0x00000028   Data   RO           15    .constdata          rtx_config.o
+    0x00002e50   0x00000008   Data   RO          252    .constdata          led.o
+    0x00002e58   0x00001880   Data   RO          388    .constdata          glcd_spi_lpc1700.o
+    0x000046d8   0x00000030   Data   RO         1296    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x10000000, Size: 0x00002000, Max: 0x00008000, ABSOLUTE)
@@ -1087,29 +1176,29 @@ Memory Map of the image
     0x10000000   0x00002000   Zero   RW            1    STACK               startup_lpc17xx.o
 
 
-    Execution Region RW_IRAM2 (Base: 0x2007c000, Size: 0x0000113c, Max: 0x00008000, ABSOLUTE)
+    Execution Region RW_IRAM2 (Base: 0x2007c000, Size: 0x00001160, Max: 0x00008000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x2007c000   0x00000004   Data   RW           16    .data               system_lpc17xx.o
-    0x2007c004   0x0000000c   Data   RW           57    .data               retarget.o
-    0x2007c010   0x00000020   Data   RW           85    .data               uart.o
-    0x2007c030   0x0000000c   Data   RW          117    .data               main.o
-    0x2007c03c   0x00000004   Data   RW          159    .data               rtx_config.o
-    0x2007c040   0x00000009   Data   RW          316    .data               glcd_spi_lpc1700.o
-    0x2007c049   0x00000003   PAD
-    0x2007c04c   0x00000008   Data   RW          356    .data               RTX_CM3.LIB(rt_task.o)
-    0x2007c054   0x00000001   Data   RW          477    .data               RTX_CM3.LIB(hal_cm3.o)
+    0x2007c000   0x00000004   Data   RW           16    .data               rtx_config.o
+    0x2007c004   0x00000020   Data   RW           41    .data               uart.o
+    0x2007c024   0x0000000c   Data   RW           84    .data               retarget.o
+    0x2007c030   0x00000004   Data   RW          108    .data               system_lpc17xx.o
+    0x2007c034   0x00000018   Data   RW          142    .data               main.o
+    0x2007c04c   0x00000009   Data   RW          389    .data               glcd_spi_lpc1700.o
     0x2007c055   0x00000003   PAD
-    0x2007c058   0x00000008   Data   RW          524    .data               RTX_CM3.LIB(rt_system.o)
-    0x2007c060   0x00000008   Data   RW          678    .data               RTX_CM3.LIB(rt_robin.o)
-    0x2007c068   0x00000004   Data   RW          864    .data               RTX_CM3.LIB(rt_time.o)
-    0x2007c06c   0x00000008   Data   RW          896    .data               RTX_CM3.LIB(rt_timer.o)
-    0x2007c074   0x00000080   Zero   RW           84    .bss                uart.o
-    0x2007c0f4   0x0000000c   Zero   RW          116    .bss                main.o
-    0x2007c100   0x00000fdc   Zero   RW          157    .bss                rtx_config.o
-    0x2007d0dc   0x00000030   Zero   RW          355    .bss                RTX_CM3.LIB(rt_task.o)
-    0x2007d10c   0x00000030   Zero   RW          607    .bss                RTX_CM3.LIB(rt_list.o)
+    0x2007c058   0x00000008   Data   RW          429    .data               RTX_CM3.LIB(rt_task.o)
+    0x2007c060   0x00000001   Data   RW          592    .data               RTX_CM3.LIB(hal_cm3.o)
+    0x2007c061   0x00000003   PAD
+    0x2007c064   0x00000008   Data   RW          639    .data               RTX_CM3.LIB(rt_system.o)
+    0x2007c06c   0x00000008   Data   RW          793    .data               RTX_CM3.LIB(rt_robin.o)
+    0x2007c074   0x00000004   Data   RW          937    .data               RTX_CM3.LIB(rt_time.o)
+    0x2007c078   0x00000008   Data   RW          969    .data               RTX_CM3.LIB(rt_timer.o)
+    0x2007c080   0x00000fdc   Zero   RW           14    .bss                rtx_config.o
+    0x2007d05c   0x00000080   Zero   RW           40    .bss                uart.o
+    0x2007d0dc   0x00000024   Zero   RW          141    .bss                main.o
+    0x2007d100   0x00000030   Zero   RW          428    .bss                RTX_CM3.LIB(rt_task.o)
+    0x2007d130   0x00000030   Zero   RW          722    .bss                RTX_CM3.LIB(rt_list.o)
 
 
 ==============================================================================
@@ -1119,20 +1208,22 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
+       336          8          0          0          0       1046   game_state.o
       3080         66       6272          9          0       8856   glcd_spi_lpc1700.o
-        88         14          0          0          0        756   joystick.o
+       140         22          0          0          0      24595   joystick.o
+       204          8          0          0          0        490   lcd_display.o
        132          8          8          0          0       1348   led.o
-       776         44          0         12         12       9719   main.o
+      1092        180          0         24         36       9802   main.o
        108         24          0          0          0        585   potentiometer.o
        160          6          0         12          0       3167   retarget.o
-        10          0         40          4       4060       8540   rtx_config.o
+        10          0         40          4       4060       9984   rtx_config.o
         40         12        204          0       8192        840   startup_lpc17xx.o
-       792         78          0          4          0       5225   system_lpc17xx.o
-       108         16          0          0          0       1189   timer.o
-       940         60          0         32        128      45567   uart.o
+       792         78          0          4          0        993   system_lpc17xx.o
+       108         16          0          0          0        769   timer.o
+       940         60          0         32        128      48355   uart.o
 
     ----------------------------------------------------------------------
-      6236        328       6572         76      12392      85792   Object Totals
+      7144        488       6572         88      12416     110830   Object Totals
          0          0         48          0          0          0   (incl. Generated)
          2          0          0          3          0          0   (incl. Padding)
 
@@ -1142,17 +1233,18 @@ Image component sizes
 
          4          4          0          0          0        136   SVC_Table.o
        516         56          0          1          0       2465   hal_cm3.o
-        76          4          0          0          0        541   rt_event.o
-       354         30          0          0         48       3295   rt_list.o
+       236         16          0          0          0       1656   rt_event.o
+       478         40          0          0         48       4249   rt_list.o
        192          4          0          0          0        605   rt_mailbox.o
        128          0          0          0          0       1489   rt_membox.o
-        16          0          0          0          0        374   rt_mutex.o
+       288         12          0          0          0       1601   rt_mutex.o
         96         22          0          8          0        962   rt_robin.o
         52          6          0          0          0        453   rt_semaphore.o
        258         42          0          8          0       2962   rt_system.o
-       904        158          0          8         48       6213   rt_task.o
+       960        166          0          8         48       6716   rt_task.o
          0          0          0          4          0        150   rt_time.o
         64          8          0          8          0        583   rt_timer.o
+       220         16          0          0          0         84   ceil.o
          0          0          0          0          0          0   entry.o
          8          4          0          0          0          0   entry2.o
          4          0          0          0          0          0   entry5.o
@@ -1160,24 +1252,33 @@ Image component sizes
          8          4          0          0          0          0   entry8.o
         30          0          0          0          0          0   handlers.o
         36          8          0          0          0         68   init.o
+         0          0          0          0          0          0   iusefp.o
         30          0          0          0          0         68   llshl.o
+        36          0          0          0          0         68   llsshr.o
         32          0          0          0          0         68   llushr.o
         50          8          0          0          0        152   printfb.o
         98          0          0          0          0         92   uldiv.o
+        40          2          0          0          0         68   cdrcmple.o
+       334          0          0          0          0        144   dadd.o
+       190          0          0          0          0        176   depilogue.o
+        50          0          0          0          0         76   dfixui.o
+        26          0          0          0          0         76   dfltui.o
 
     ----------------------------------------------------------------------
-      2960        358          0         40         96      20676   Library Totals
+      4468        418          0         40         96      25167   Library Totals
          4          0          0          3          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
-      2660        334          0         37         96      20228   RTX_CM3.LIB
-       296         24          0          0          0        448   mc_w.l
+      3272        376          0         37         96      24027   RTX_CM3.LIB
+       220         16          0          0          0         84   m_ws.l
+       332         24          0          0          0        516   mc_w.l
+       640          2          0          0          0        540   mf_w.l
 
     ----------------------------------------------------------------------
-      2960        358          0         40         96      20676   Library Totals
+      4468        418          0         40         96      25167   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1186,15 +1287,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      9196        686       6572        116      12488     103712   Grand Totals
-      9196        686       6572        116      12488     103712   ELF Image Totals
-      9196        686       6572        116          0          0   ROM Totals
+     11612        906       6572        128      12512     132305   Grand Totals
+     11612        906       6572        128      12512     132305   ELF Image Totals
+     11612        906       6572        128          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                15768 (  15.40kB)
-    Total RW  Size (RW Data + ZI Data)             12604 (  12.31kB)
-    Total ROM Size (Code + RO Data + RW Data)      15884 (  15.51kB)
+    Total RO  Size (Code + RO Data)                18184 (  17.76kB)
+    Total RW  Size (RW Data + ZI Data)             12640 (  12.34kB)
+    Total ROM Size (Code + RO Data + RW Data)      18312 (  17.88kB)
 
 ==============================================================================
 

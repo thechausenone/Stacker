@@ -402,19 +402,9 @@
           <GroupName>System Code</GroupName>
           <Files>
             <File>
-              <FileName>system_LPC17xx.c</FileName>
+              <FileName>RTX_config.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Software\Keil\ARM\Startup\NXP\LPC17xx\system_LPC17xx.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Souce Code</GroupName>
-          <Files>
-            <File>
-              <FileName>Retarget.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Source Code\Retarget.c</FilePath>
+              <FilePath>.\Source Code\RTX_config.c</FilePath>
             </File>
             <File>
               <FileName>uart.c</FileName>
@@ -422,29 +412,39 @@
               <FilePath>.\Source Code\uart.c</FilePath>
             </File>
             <File>
-              <FileName>uart.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Source Code\uart.h</FilePath>
+              <FileName>Retarget.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source Code\Retarget.c</FilePath>
             </File>
+            <File>
+              <FileName>system_LPC17xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>C:\Software\Keil\ARM\Startup\NXP\LPC17xx\system_LPC17xx.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Source Code</GroupName>
+          <Files>
             <File>
               <FileName>Main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source Code\Main.c</FilePath>
             </File>
             <File>
-              <FileName>RTX_config.c</FileName>
+              <FileName>lcd_display.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Source Code\RTX_config.c</FilePath>
+              <FilePath>.\Source Code\lcd_display.c</FilePath>
             </File>
             <File>
-              <FileName>Main.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Source Code\Main.h</FilePath>
+              <FileName>stat_display.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source Code\stat_display.c</FilePath>
             </File>
             <File>
-              <FileName>type.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Source Code\type.h</FilePath>
+              <FileName>game_state.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source Code\game_state.c</FilePath>
             </File>
           </Files>
         </Group>

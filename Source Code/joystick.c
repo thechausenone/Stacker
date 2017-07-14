@@ -4,6 +4,7 @@
 
 #include <lpc17xx.h>
 #include "joystick.h"
+#include "Main.h"
 
 void joystick_setup(void) {
 	LPC_PINCON->PINSEL3 &= ~((3<< 8)|(3<<14)|(3<<16)|(3<<18)|(3<<20));
@@ -17,6 +18,8 @@ uint32_t joystick_read(void) {
 void pushbutton_setup(void) {
 	LPC_PINCON->PINSEL4 &= ~(3<<20);           // P2.10 is GPIO (INT0)
 	LPC_GPIO2->FIODIR   &= ~(1<<10);           // P2.10 is input
+	LPC_GPIOINT->IO2IntEnF |= (1<<10);
+	NVIC_EnableIRQ(EINT3_IRQn);
 }
 
 uint32_t pushbutton_read(void) {  // returns zero if button is down
