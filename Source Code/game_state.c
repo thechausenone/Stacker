@@ -26,9 +26,19 @@ void create_stack(U32 h, U32 l, U32 x, U32 y){
   stack->y = y;
 }
 
+void spawn_block() {
+  if (spawn_pos == 1) {
+    block->x = 240 - block->length;
+    spawn_pos = 0;
+  }
+  else if (spawn_pos == 0) {
+    block->x = 0;
+    spawn_pos = 1;
+  }
+}
+
 //initializes all required peripherals and gameplay objects
-void init_game() {
-  
+void init_peripherals() {
   //peripherals
   GLCD_Init();
   GLCD_Clear(B);
@@ -37,15 +47,14 @@ void init_game() {
   pushbutton_setup();
   joystick_setup();
   potentiometer_setup(); 
-  
+}
+
+void init_game() {
   //gameplay objects
-  create_block(8, 80, 1, 160, 8);
-  create_stack(8, 80, 80, 0);
+  create_block(8, 80, 1, 160, 304);
+  create_stack(8, 80, 80, 312);
   
   //draw initial graphics on the LCD
-  draw_to_LCD('S', 1, stack->height*stack->length);
-  draw_to_LCD('B', 1, block->height*block->length);
-
-  //draw the string to the LCD
-  //string_to_LCD(3);
+  draw_to_LCD('S', 1);
+  draw_to_LCD('B', 1);
 }

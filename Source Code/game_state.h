@@ -11,6 +11,7 @@
 #include "timer.h"
 #include "glcd_scroll.h"
 #include "glcd.h"
+#include <stdbool.h>
 
 //=================================================================
 //=====================FUNCTION SIGNATURES=========================
@@ -18,6 +19,9 @@
 void create_block(U32 h, U32 l, U32 s, U32 x, U32 y);
 void create_stack(U32 h, U32 l, U32 x, U32 y);
 void init_game(void);
+void spawn_block(void);
+void init_peripherals(void);
+void check_end_game(void);
 
 #endif
 

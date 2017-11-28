@@ -8,7 +8,6 @@
 ### List of Objects: adding '"system_lpc17xx.o"'
 ### List of Objects: adding '"main.o"'
 ### List of Objects: adding '"lcd_display.o"'
-### List of Objects: adding '"stat_display.o"'
 ### List of Objects: adding '"game_state.o"'
 ### List of Objects: adding '"led.o"'
 ### List of Objects: adding '"joystick.o"'
@@ -17,7 +16,7 @@
 ### List of Objects: adding '"glcd_scroll.o"'
 ### List of Objects: adding '"glcd_spi_lpc1700.o"'
 ### ADS-LD Command completed:
---cpu Cortex-M3 "startup_lpc17xx.o" "rtx_config.o" "uart.o" "retarget.o" "system_lpc17xx.o" "main.o" "lcd_display.o" "stat_display.o" "game_state.o" "led.o" "joystick.o" "potentiometer.o" "timer.o" "glcd_scroll.o" "glcd_spi_lpc1700.o" 
+--cpu Cortex-M3 "startup_lpc17xx.o" "rtx_config.o" "uart.o" "retarget.o" "system_lpc17xx.o" "main.o" "lcd_display.o" "game_state.o" "led.o" "joystick.o" "potentiometer.o" "timer.o" "glcd_scroll.o" "glcd_spi_lpc1700.o" 
 c:\Software\Keil\ARM\RV31\LIB\RTX_CM3.LIB --library_type=microlib --strict --scatter "Project4.sct" 
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
@@ -25,7 +24,7 @@ c:\Software\Keil\ARM\RV31\LIB\RTX_CM3.LIB --library_type=microlib --strict --sca
 ### ADS-LD Output File: 'Project4.axf'
 ### ADS-LD Command File: 'Project4.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'Project4.lnp', Handle=0x000005A0
+### Creating CmdFile 'Project4.lnp', Handle=0x00000AA0
 ### Writing '.lnp' file
 ### ADS-LD Command file 'Project4.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

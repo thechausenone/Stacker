@@ -19,7 +19,7 @@ void init_scroll( void );
 void print_text( unsigned char *str_ptr, unsigned int str_len );
 void print_string( unsigned char *str_ptr );
 void append_char( unsigned char _char );
-void initJoyStick( void );
+void initJoyck( void );
 void joyStickBusyWaitingMonitor( void );
 
 #endif /* _GLCD_SCROLL_H */

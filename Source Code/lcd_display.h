@@ -8,7 +8,8 @@
 //=================================================================
 //=====================FUNCTION SIGNATURES=========================
 //=================================================================
-void draw_to_LCD(char type, U32 mode, U32 display_size);
-void string_to_LCD(U32 display);
+void draw_to_LCD(char type, U32 mode);
+void draw_text(U32 mode);
+void draw_title(void);
 
 #endif
