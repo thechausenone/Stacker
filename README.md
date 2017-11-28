@@ -60,3 +60,4 @@ activated.
 6. A task that resets the game when the game over condition is met during Task 2.
 
 ## Initial Gameplay Mockup
+![stacker design proposal](https://github.com/thechausenone/Stacker/blob/master/design_proposal_diagram.png)
