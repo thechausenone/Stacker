@@ -6,3 +6,4 @@ lcd_display.o: c:\Software\Keil\ARM\RV31\INC\rtl.h
 lcd_display.o: c:\Software\Keil\ARM\ARMCC\bin\..\include\stdbool.h
 lcd_display.o: Source Code\glcd_scroll.h
 lcd_display.o: Source Code\glcd.h
+lcd_display.o: c:\Software\Keil\ARM\ARMCC\bin\..\include\stdio.h

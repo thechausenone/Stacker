@@ -7,8 +7,8 @@ t_block* block = (t_block*)0x10000000;
 t_stack* stack = (t_stack*)0x10002567;
 OS_MUT sem_speed, sem_pos, sem_button, sem_display_state;
 OS_TID tid_move_block, tid_update_speed, tid_drop_block, tid_display_state, tid_update_LED, tid_end_game, tid_init_tasks;
-U32 display_state = 0, old_state = 0, check_isr = 0;
-bool from_pot = 0, spawn_pos = 0, end_game_flag = 0;
+U32 display_state = 0, old_state = 0, score = 0;
+bool from_pot = 0, spawn_pos = 0, end_game_flag = 0, check_isr = 0;
 
 //=================================================================
 //=======================INTERRUPTS================================
@@ -32,7 +32,7 @@ __task void update_display_state() {
       
       //if UP is actuated on the joystick
 			if (joystick_read() == 16)
-        display_state = 2;
+        display_state = 1;
 
       //if DOWN is actuated on the joystick
 			else if(joystick_read() == 64) 
@@ -56,21 +56,28 @@ __task void update_LED() {
 			os_mut_wait(&sem_display_state, 0xffff); {
 				
 				//displays current score 
-				if (display_state == 0)
-					LED_display((stack->height)/8);
-				
+				if (display_state == 0){
+          LED_display(score);
+          draw_stat(score, 0);
+        }
+
 				//displays speed for an instant (from potentiometer)
-				else if (display_state == 2 && from_pot == 1){
+				else if (display_state == 1 && from_pot == 1){
 					LED_display(block->speed);
-					timer_delay(100);
+          draw_stat(block->speed, 1);
+          
+          //pause the game so the user can see the current speed
+					timer_delay(500);
 					from_pot = 0;
 					display_state = old_state;
 				}
 				
 				//displays speed (from scrolling)
-				else
-					LED_display(block->speed);
-				
+				else{
+          LED_display(block->speed);
+          draw_stat(block->speed, 1);
+        }
+
 			} os_mut_release(&sem_display_state);
 		}os_evt_clr(0x0003, tid_update_LED);
 	}
@@ -110,11 +117,11 @@ __task void drop_block() {
 					stack->length = stack_xf - block_xi;
 					stack->x = stack_xf - stack->length;
           stack->y = stack->y - 8;
-					stack->height = stack->height + block->height;
 					
 					//update block
 					block->length = stack->length;
-          block->y = 312-stack->height;
+          block->y = stack->y - 8;
+          score = score + ((block->length)/8)*(block->speed);
                 
           //update which side the new block spawns
           spawn_block();
@@ -125,11 +132,12 @@ __task void drop_block() {
 					//update stack (stack x-pos stays the same)
 					stack->length = block_xf - stack_xi;
           stack->y = stack->y - 8;
-					stack->height = stack->height + block->height;
+          
 					
 					//update block
 					block->length = stack->length;
-					block->y = 312-stack->height;
+					block->y = stack->y - 8;
+          score = score + ((block->length)/8)*(block->speed);
         
           //update which side the new block spawns
           spawn_block();
@@ -140,7 +148,7 @@ __task void drop_block() {
 				draw_to_LCD('S', 1);      
         
         //check win condition
-        if (stack->y < 312){
+        if (stack->y < 8){
           end_game_flag = 1;
           os_evt_set(0x0300, tid_end_game);
         }
@@ -169,7 +177,7 @@ __task void update_speed() {
 				//check if display state needs to be updated
 				if (block->speed != old_speed){
 					old_state = display_state;
-					display_state = 2;
+					display_state = 1;
 					from_pot = 1;
 				}
 				
@@ -260,8 +268,9 @@ __task void end_game() {
       GLCD_Clear(B);
 
       //display the lose or win screen
-      draw_text(end_game_flag);
+      draw_text(score, end_game_flag);
       
+      //waits for the user to hard reset
       while(1) {}
       
     }

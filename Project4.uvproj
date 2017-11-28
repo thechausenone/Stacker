@@ -437,11 +437,6 @@
               <FilePath>.\Source Code\lcd_display.c</FilePath>
             </File>
             <File>
-              <FileName>stat_display.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Source Code\stat_display.c</FilePath>
-            </File>
-            <File>
               <FileName>game_state.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source Code\game_state.c</FilePath>

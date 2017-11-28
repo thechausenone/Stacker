@@ -3,7 +3,6 @@
 #include "type.h"
 #include <math.h>
 #include "lcd_display.h"
-#include "stat_display.h"
 #include "game_state.h"
 #include "game_objects.h"
 #include "potentiometer.h"

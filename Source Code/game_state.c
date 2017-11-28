@@ -4,7 +4,7 @@
 //=====================FUNCTIONS===================================
 //=================================================================
 //initializes the values for the block object
-void create_block(U32 h, U32 l, U32 s, U32 x, U32 y){
+void create_block(U32 h, U32 l, U32 x, U32 y, U32 s){
   U32 i;
   block->height = h;
   block->length = l;
@@ -19,8 +19,7 @@ void create_block(U32 h, U32 l, U32 s, U32 x, U32 y){
 }
 
 //initializes the values for the stack object
-void create_stack(U32 h, U32 l, U32 x, U32 y){
-  stack->height = h;
+void create_stack(U32 l, U32 x, U32 y){
   stack->length = l;
   stack->x = x;
   stack->y = y;
@@ -51,8 +50,8 @@ void init_peripherals() {
 
 void init_game() {
   //gameplay objects
-  create_block(8, 80, 1, 160, 304);
-  create_stack(8, 80, 80, 312);
+  create_block(8, 80, 160, 304, 1);
+  create_stack(80, 80, 312);
   
   //draw initial graphics on the LCD
   draw_to_LCD('S', 1);

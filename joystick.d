@@ -15,7 +15,7 @@ joystick.o: c:\Software\Keil\ARM\RV31\INC\rtl.h
 joystick.o: c:\Software\Keil\ARM\ARMCC\bin\..\include\stdbool.h
 joystick.o: Source Code\glcd_scroll.h
 joystick.o: Source Code\glcd.h
-joystick.o: Source Code\stat_display.h
+joystick.o: c:\Software\Keil\ARM\ARMCC\bin\..\include\stdio.h
 joystick.o: Source Code\game_state.h
 joystick.o: Source Code\Main.h
 joystick.o: Source Code\joystick.h
@@ -24,4 +24,3 @@ joystick.o: Source Code\led.h
 joystick.o: Source Code\timer.h
 joystick.o: Source Code\potentiometer.h
 joystick.o: Source Code\joystick.h
-joystick.o: c:\Software\Keil\ARM\ARMCC\bin\..\include\stdio.h
