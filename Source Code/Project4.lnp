@@ -1,5 +1,5 @@
---cpu Cortex-M3 "startup_lpc17xx.o" "system_lpc17xx.o" "ece_spi.o" "glcd_scroll.o" "glcd_spi_lpc1700.o" "joystick.o" "led.o" "mpu9250.o" "potentiometer.o" "retarget.o" "rtx_config.o" "sensor_fusion.o" "timer.o" "uart.o" 
---library_type=microlib --strict --scatter "Project4.sct" 
+--cpu Cortex-M3 "startup_lpc17xx.o" "system_lpc17xx.o" "game_state.o" "glcd_scroll.o" "glcd_spi_lpc1700.o" "joystick.o" "lcd_display.o" "led.o" "main.o" "potentiometer.o" "retarget.o" "rtx_config.o" "timer.o" "uart.o" 
+c:\Software\Keil\ARM\RV31\LIB\RTX_CM3.LIB --library_type=microlib --strict --scatter "Project4.sct" 
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
  --list ".\Project4.map" -o Project4.axf

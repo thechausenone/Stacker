@@ -19,9 +19,9 @@
 void create_block(U32 h, U32 l, U32 x, U32 y, U32 s);
 void create_stack(U32 l, U32 x, U32 y);
 void init_game(void);
-void spawn_block(void);
 void init_peripherals(void);
-void check_end_game(void);
+void spawn_block(void);
+//S32 reverse_direction(S32 direction);
 
 #endif
 

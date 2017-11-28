@@ -1,0 +1,9 @@
+lcd_display.o: lcd_display.c
+lcd_display.o: lcd_display.h
+lcd_display.o: type.h
+lcd_display.o: game_objects.h
+lcd_display.o: c:\Software\Keil\ARM\RV31\INC\rtl.h
+lcd_display.o: c:\Software\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+lcd_display.o: glcd_scroll.h
+lcd_display.o: glcd.h
+lcd_display.o: c:\Software\Keil\ARM\ARMCC\bin\..\include\stdio.h

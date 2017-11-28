@@ -34,5 +34,7 @@ typedef struct stack {
 //=================================================================
 extern t_block* block;
 extern t_stack* stack;
-extern bool spawn_pos; 
+extern bool spawn_pos;
+
 #endif
+

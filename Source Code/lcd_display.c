@@ -52,7 +52,7 @@ void draw_stat(U32 stat, U32 mode) {
   }
   else if (mode == 2){
     sprintf(stat_out, "score: %d", stat);
-    GLCD_DisplayString(6, 2, 1, stat_out);
+    GLCD_DisplayString(6, 3, 1, stat_out);
   }
 }
 

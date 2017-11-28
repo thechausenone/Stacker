@@ -17,5 +17,5 @@
 //=====================FUNCTION SIGNATURES=========================
 //=================================================================
 void EINT3_IRQHandler(void);
-
+void init_tasks(void);
 #endif
