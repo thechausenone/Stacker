@@ -61,4 +61,3 @@ activated.
 
 ## Initial Gameplay Mockup
 ![stacker design proposal](https://github.com/thechausenone/Stacker/blob/master/design_proposal_diagram.png)
-
